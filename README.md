@@ -5,6 +5,4 @@
 Team members: Natalie Chan, Gloria Zhao, Vicky Huang
 
 ## Design Rationale
-https://docs.google.com/document/d/1pZWkhctgPxd1Wgmea7QpqBO5mD3NxHqaFjt1QAKPmnk/edit?usp=sharing
-
-
+https://docs.google.com/spreadsheets/d/1l8OPx45qtbDYTUqgehJL3m7RJFSrLO7IgVp8Kqd6LcI/edit#gid=0
