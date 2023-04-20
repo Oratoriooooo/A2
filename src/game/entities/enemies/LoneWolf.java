@@ -1,4 +1,4 @@
-package game;
+package game.entities.enemies;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -7,6 +7,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.events.AttackAction;
+import game.behaviours.Behaviour;
+import game.behaviours.Status;
+import game.behaviours.WanderBehaviour;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +29,7 @@ public class LoneWolf extends Actor {
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
         this.behaviours.put(999, new WanderBehaviour());
+
     }
 
     /**
@@ -38,11 +43,13 @@ public class LoneWolf extends Actor {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        System.out.println(hitPoints);
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if(action != null)
                 return action;
         }
+
         return new DoNothingAction();
     }
 
@@ -59,6 +66,7 @@ public class LoneWolf extends Actor {
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
+
             // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.
             // HINT 1: How would you attack the enemy with a weapon?
         }

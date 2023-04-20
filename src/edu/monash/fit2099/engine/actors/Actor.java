@@ -167,6 +167,7 @@ public abstract class Actor implements Capable, Printable {
 	 * @return A collection of Actions.
 	 */
 	public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+		System.out.println("AA");
 		return new ActionList();
 	}
 

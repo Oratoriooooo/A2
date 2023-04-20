@@ -1,4 +1,4 @@
-package game;
+package game.resettables;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class ResetManager {
         this.resettables = new ArrayList<>();
     }
 
-    public void run() {}
+    public void run() {} //creates runes back into player if needed
 
     public void registerResettable(Resettable resettable) {}
 

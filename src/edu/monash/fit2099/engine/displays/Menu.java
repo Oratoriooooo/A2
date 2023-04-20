@@ -25,8 +25,7 @@ public class Menu {
 	public Action showMenu(Actor actor, ActionList actions, Display display) {
 		ArrayList<Character> freeChars = new ArrayList<Character>();
 		HashMap<Character, Action> keyToActionMap = new HashMap<Character, Action>();
-
-		for (char i = 'a'; i <= 'z'; i++) {
+		for (char i = 'a'; i <= 'z'; i++) { //check for 26 options max based on alphabet
 			freeChars.add(i);
 		}
 
@@ -65,6 +64,7 @@ public class Menu {
 	 */
 	class SortHotkeysFirst implements Comparator<Action> {
 		public int compare(Action a, Action b) {
+
 			if (a.hotkey() != null && b.hotkey() == null)
 				return -1;
 			

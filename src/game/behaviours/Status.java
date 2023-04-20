@@ -1,4 +1,4 @@
-package game;
+package game.behaviours;
 
 /**
  * Use this enum class to give `buff` or `debuff`.
@@ -8,5 +8,6 @@ package game;
 public enum Status {
     HOSTILE_TO_ENEMY,
     RESPAWNABLE,
-    RESTING
+    RESTING,
+    CAN_TRADE
 }
