@@ -13,7 +13,7 @@ import game.utils.RunesManager;
  * An Action to attack another Actor.
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Natalie Chan
  *
  */
 public class AttackAction extends Action {
@@ -64,6 +64,7 @@ public class AttackAction extends Action {
 	/**
 	 * When executed, the chance to hit of the weapon that the Actor used is computed to determine whether
 	 * the actor will hit the target. If so, deal damage to the target and determine whether the target is killed.
+	 * After death action, generating runes to be given to attacker, is determined
 	 *
 	 * @param actor The actor performing the attack action.
 	 * @param map The map the actor is on.
@@ -85,6 +86,7 @@ public class AttackAction extends Action {
 		target.hurt(damage);
 		if (!target.isConscious()) {
 			result += new DeathAction(actor).execute(target, map);
+			//checks if runes can be given to attacker
 			if (target.hasCapability(Status.CAN_GENERATE_RUNES) && actor.hasCapability(Status.CAN_RECIEVE_RUNES)){
 				result += new WinRunesAction(actor).execute(target, map);
 			}
