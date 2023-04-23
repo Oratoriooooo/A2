@@ -16,6 +16,7 @@ import game.environments.Dirt;
 import game.environments.Floor;
 import game.environments.Wall;
 import game.items.Runes;
+import game.utils.RunesManager;
 
 /**
  * The main class to start the game.
@@ -73,7 +74,7 @@ public class Application {
 		gameMap.at(23, 17).addActor(new LoneWolf());
 /*
 		Scanner startingClass = new Scanner(System.in);
-		System.out.println("Choose the Tarnished's class:\n1. Samurai\n2. Bandit\n3. Wretch");
+		System.out.println("Select your role:\ns. Samurai\nb. Bandit\nw. Wretch");
 		String selection = startingClass.nextLine();
 		StartingArchetype archetype;
 		switch (selection){
@@ -89,12 +90,19 @@ public class Application {
 */
 
 		Runes runes = new Runes(); //instantiate runes
+		Runes run = new Runes();
+		run.setRunesValue(100);
+		run.togglePortability();
 		Merchant trader = new Merchant();
+		RunesManager runesManager = RunesManager.getInstance();
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300, runes);
 		world.addPlayer(player, gameMap.at(36, 10));
-		gameMap.at(37, 11).addActor(trader);
+		//gameMap.at(37, 11).addActor(trader);
+		gameMap.at(39,11).addItem(run);
+
+
 		world.run();
 	}
 }

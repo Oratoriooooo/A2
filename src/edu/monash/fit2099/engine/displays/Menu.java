@@ -53,7 +53,6 @@ public class Menu {
 		do {
 			key = display.readChar();
 		} while (!keyToActionMap.containsKey(key));
-
 		return keyToActionMap.get(key);
 	}
 

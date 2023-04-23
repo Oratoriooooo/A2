@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.behaviours.Status;
+import game.utils.RunesManager;
 
 /**
  * An Action to attack another Actor.
@@ -83,6 +85,9 @@ public class AttackAction extends Action {
 		target.hurt(damage);
 		if (!target.isConscious()) {
 			result += new DeathAction(actor).execute(target, map);
+			if (target.hasCapability(Status.CAN_GENERATE_RUNES) && actor.hasCapability(Status.CAN_RECIEVE_RUNES)){
+				result += new WinRunesAction(actor).execute(target, map);
+			}
 		}
 
 		return result;

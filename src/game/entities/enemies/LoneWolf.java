@@ -11,6 +11,8 @@ import game.events.AttackAction;
 import game.behaviours.Behaviour;
 import game.behaviours.Status;
 import game.behaviours.WanderBehaviour;
+import game.utils.GenerateRunes;
+import game.utils.RunesManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,12 +25,18 @@ import java.util.Map;
  * Modified by:
  *
  */
-public class LoneWolf extends Actor {
+public class LoneWolf extends Actor implements GenerateRunes {
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    private int runes;
+
 
     public LoneWolf() {
-        super("Lone Wolf", 'h', 102);
+        super("Lone Wolf", 'h', 1);//102);
         this.behaviours.put(999, new WanderBehaviour());
+        this.addCapability(Status.CAN_GENERATE_RUNES);
+        RunesManager.getInstance().registerActor(this, this);
+        this.runes = generateRunes();
+
 
     }
 
@@ -43,7 +51,6 @@ public class LoneWolf extends Actor {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        System.out.println(hitPoints);
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if(action != null)
@@ -73,6 +80,9 @@ public class LoneWolf extends Actor {
         return actions;
     }
 
+    public int generateRunes(){
+        return 5;
+    }
 
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {

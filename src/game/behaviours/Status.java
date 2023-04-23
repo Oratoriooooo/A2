@@ -9,5 +9,7 @@ public enum Status {
     HOSTILE_TO_ENEMY,
     RESPAWNABLE,
     RESTING,
-    CAN_TRADE
+    CAN_TRADE,
+    CAN_RECIEVE_RUNES,
+    CAN_GENERATE_RUNES
 }

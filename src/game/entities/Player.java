@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
-import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.items.Runes;
 import game.items.weapons.Club;
 import game.resettables.Resettable;
@@ -20,7 +19,7 @@ import game.behaviours.Status;
  * Modified by:
  *
  */
-public class Player extends Actor implements Resettable {
+public class Player extends Actor implements Resettable{
 
 	private final Menu menu = new Menu();
 	private Runes runes;
@@ -36,17 +35,32 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.CAN_TRADE);
+		this.addCapability(Status.CAN_RECIEVE_RUNES);
 		this.addWeaponToInventory(new Club());
 		this.addItemToInventory(runes);
 		this.setRunes(runes);
+
+	}
+
+	public String displayPlayer(){
+		int runeValue = this.getRunes().getRunesValue();
+		int maxHp = this.getMaxHp();
+		int currentHp = this.getHitPoints();
+		return "Tarnished (" +currentHp+ "/"+maxHp+"), runes: " + runeValue;
+	}
+
+	public int getHitPoints(){
+		return this.hitPoints;
 	}
 
 	public Runes getRunes(){
+
 		return this.runes;
 	}
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+		System.out.println(displayPlayer());
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
@@ -58,6 +72,7 @@ public class Player extends Actor implements Resettable {
 		this.runes = runes;
 		this.addItemToInventory(runes);
 	}
+
 
 	@Override
 	public void reset() {}
