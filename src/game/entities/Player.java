@@ -10,6 +10,7 @@ import game.items.Runes;
 import game.items.weapons.Club;
 import game.resettables.Resettable;
 import game.behaviours.Status;
+import game.utils.RunesManager;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -39,6 +40,7 @@ public class Player extends Actor implements Resettable{
 		this.addWeaponToInventory(new Club());
 		this.addItemToInventory(runes);
 		this.setRunes(runes);
+		RunesManager.getInstance().registerRunes(this, runes);
 
 	}
 
