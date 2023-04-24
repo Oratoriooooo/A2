@@ -43,8 +43,6 @@ public class LoneWolf extends Enemy{
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
         RunesManager.getInstance().registerActor(this, this);
-
-
     }
 
     /**
@@ -57,8 +55,11 @@ public class LoneWolf extends Enemy{
     }
 
     /**
+     * Creates and returns an Lone Wolf intrinsic weapon.
      *
-     * @return
+     * 'bites' for 97 damage at a hit rate of 95.
+     *
+     * @return a freshly-instantiated IntrinsicWeapon for Lone Wolf
      */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
