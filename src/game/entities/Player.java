@@ -44,7 +44,6 @@ public class Player extends Actor implements Resettable{
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
 		this.setRunes(runes);
-		this.addItemToInventory(runes);
 		RunesManager.getInstance().registerRunes(this, runes);
 
 	}
