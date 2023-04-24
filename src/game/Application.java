@@ -90,17 +90,17 @@ public class Application {
 */
 
 		Runes runes = new Runes(); //instantiate runes
-		Runes run = new Runes();
-		run.setRunesValue(100);
-		run.togglePortability();
-		Merchant trader = new Merchant("Merchant Kale", 'K', 1);
+		//Runes run = new Runes();
+		//run.setRunesValue(100);
+		//run.togglePortability();
+		//Merchant trader = new Merchant("Merchant Kale", 'K', 1);
 		RunesManager runesManager = RunesManager.getInstance();
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300, runes);
 		world.addPlayer(player, gameMap.at(36, 10));
-		gameMap.at(37, 11).addActor(trader);
-		gameMap.at(39,11).addItem(run);
+		//gameMap.at(37, 11).addActor(trader);
+		//gameMap.at(39,11).addItem(run);
 
 
 		world.run();
