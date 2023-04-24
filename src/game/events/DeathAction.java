@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.behaviours.Status;
+import game.utils.GenerateRunes;
 import game.utils.RunesManager;
 
 /**
@@ -14,6 +15,7 @@ import game.utils.RunesManager;
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
+ * @author Natalie Chan
  *
  */
 public class DeathAction extends Action {
@@ -45,6 +47,7 @@ public class DeathAction extends Action {
             drop.execute(target, map);
         // remove actor
         map.removeActor(target);
+        RunesManager.getInstance().removeActor(target); //removes generate runes actor
         result += System.lineSeparator() + menuDescription(target);
         return result;
     }
