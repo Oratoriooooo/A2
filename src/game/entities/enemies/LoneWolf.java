@@ -12,6 +12,7 @@ import game.behaviours.Behaviour;
 import game.behaviours.Status;
 import game.behaviours.WanderBehaviour;
 import game.utils.GenerateRunes;
+import game.utils.RandomNumberGenerator;
 import game.utils.RunesManager;
 
 import java.util.HashMap;
@@ -25,63 +26,20 @@ import java.util.Map;
  * Modified by:
  *
  */
-public class LoneWolf extends Actor implements GenerateRunes {
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
-    private int runes;
+public class LoneWolf extends Enemy{
+    private final int MAX_RUNES = 1470;
+    private final int MIN_RUNES = 55;
 
 
     public LoneWolf() {
-        super("Lone Wolf", 'h', 1);//102);
-        this.behaviours.put(999, new WanderBehaviour());
-        this.addCapability(Status.CAN_GENERATE_RUNES);
+        super("Lone Wolf", 'h', 102);
         RunesManager.getInstance().registerActor(this, this);
-        this.runes = generateRunes();
 
 
-    }
-
-    /**
-     * At each turn, select a valid action to perform.
-     *
-     * @param actions    collection of possible Actions for this Actor
-     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-     * @param map        the map containing the Actor
-     * @param display    the I/O object to which messages may be written
-     * @return the valid action that can be performed in that iteration or null if no valid action is found
-     */
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        for (Behaviour behaviour : behaviours.values()) {
-            Action action = behaviour.getAction(this, map);
-            if(action != null)
-                return action;
-        }
-
-        return new DoNothingAction();
-    }
-
-    /**
-     * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
-     *
-     * @param otherActor the Actor that might be performing attack
-     * @param direction  String representing the direction of the other Actor
-     * @param map        current GameMap
-     * @return
-     */
-    @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions = new ActionList();
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            actions.add(new AttackAction(this, direction));
-
-            // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.
-            // HINT 1: How would you attack the enemy with a weapon?
-        }
-        return actions;
     }
 
     public int generateRunes(){
-        return 5;
+        return RandomNumberGenerator.getRandomInt(MIN_RUNES, MAX_RUNES);
     }
 
     @Override

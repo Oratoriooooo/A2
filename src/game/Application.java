@@ -93,7 +93,7 @@ public class Application {
 		Runes run = new Runes();
 		run.setRunesValue(100);
 		run.togglePortability();
-		Merchant trader = new Merchant();
+		Merchant trader = new Merchant("Merchant Kale", 'K', 1);
 		RunesManager runesManager = RunesManager.getInstance();
 
 		// HINT: what does it mean to prefer composition to inheritance?
