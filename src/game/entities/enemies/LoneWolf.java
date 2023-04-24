@@ -24,13 +24,22 @@ import java.util.Map;
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
+ * @author Natalie Chan
  *
  */
 public class LoneWolf extends Enemy{
+    /**
+     * max amount of runes a Lone Wolf may generate
+     */
     private final int MAX_RUNES = 1470;
+    /**
+     * min amount of runes a Lone Wolf may generate
+     */
     private final int MIN_RUNES = 55;
 
-
+    /**
+     * Constructor.
+     */
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
         RunesManager.getInstance().registerActor(this, this);
@@ -38,10 +47,19 @@ public class LoneWolf extends Enemy{
 
     }
 
+    /**
+     * generates a random value of runes upon death.
+     * The range is from 55 to 1470 runes.
+     * @return random amount of runes
+     */
     public int generateRunes(){
         return RandomNumberGenerator.getRandomInt(MIN_RUNES, MAX_RUNES);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(97, "bites", 95);

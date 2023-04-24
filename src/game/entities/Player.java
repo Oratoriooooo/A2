@@ -24,16 +24,16 @@ import game.utils.RunesManager;
  */
 public class Player extends Actor implements Resettable{
 	/**
-	 *
+	 * A menu GUI to display current allowable player actions
 	 */
 	private final Menu menu = new Menu();
 	/**
-	 *
+	 * Holds a player's runes
 	 */
 	private Runes runes;
 
 	/**
-	 * Constructor of a Player.
+	 * Constructor of a Player. Registers itself to be keyed to one runes object
 	 *
 	 * @param name        Name to call the player in the UI
 	 * @param displayChar Character to represent the player in the UI
@@ -60,22 +60,29 @@ public class Player extends Actor implements Resettable{
 	}
 
 	/**
-	 *
-	 * @return
+	 * Gets current hitpoints of a player
+	 * @return value of a player's hitpoints
 	 */
 	public int getHitPoints(){
 		return this.hitPoints;
 	}
 
 	/**
-	 *
-	 * @return
+	 * gets the Runes of a player
+	 * @return runes of a player
 	 */
 	public Runes getRunes(){
-
 		return this.runes;
 	}
 
+	/**
+	 *
+	 * @param actions    collection of possible Actions for this Actor
+	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+	 * @param map        the map containing the Actor
+	 * @param display    the I/O object to which messages may be written
+	 * @return
+	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		System.out.println(this + displayCurrentHitPoints() + ", runes: " + getRunes().getRunesValue());
@@ -86,6 +93,10 @@ public class Player extends Actor implements Resettable{
 		return menu.showMenu(this, actions, display);
 	}
 
+	/**
+	 * Sets Runes to the player's inventory and attribute for easy access
+	 * @param runes A collection of runes
+	 */
 	public void setRunes(Runes runes){
 		this.runes = runes;
 		this.addItemToInventory(runes);
@@ -93,5 +104,10 @@ public class Player extends Actor implements Resettable{
 
 
 	@Override
-	public void reset() {}
+	public void reset() {
+		Runes newRunes = new Runes();
+		setRunes(newRunes);
+		this.resetMaxHp(this.getMaxHp());
+
+	}
 }
