@@ -15,6 +15,7 @@ import game.entities.Player;
 import game.environments.Dirt;
 import game.environments.Floor;
 import game.environments.Wall;
+import game.items.FlaskOfCrimsonTears;
 import game.items.Runes;
 import game.utils.RunesManager;
 
@@ -94,10 +95,12 @@ public class Application {
 		}
 
 		Runes runes = new Runes(); //instantiate runes
+		FlaskOfCrimsonTears flask = new FlaskOfCrimsonTears();
 		RunesManager runesManager = RunesManager.getInstance();
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', archetype, runes);
+		player.addItemToInventory(flask);
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		//test application ------------

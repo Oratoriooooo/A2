@@ -11,5 +11,6 @@ public enum Status {
     RESTING,
     CAN_TRADE,
     CAN_RECIEVE_RUNES,
-    CAN_GENERATE_RUNES
+    CAN_GENERATE_RUNES,
+    CAN_HEAL
 }
