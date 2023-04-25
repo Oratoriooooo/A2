@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.archetypes.StartingArchetype;
+import game.archetypes.*;
 import game.entities.Traders.Merchant;
 import game.entities.enemies.LoneWolf;
 import game.entities.Player;
@@ -72,33 +72,39 @@ public class Application {
 		}
 
 		gameMap.at(23, 17).addActor(new LoneWolf());
-/*
+
+		// ask for starting archetype of the tarnished
 		Scanner startingClass = new Scanner(System.in);
 		System.out.println("Select your role:\ns. Samurai\nb. Bandit\nw. Wretch");
 		String selection = startingClass.nextLine();
-		StartingArchetype archetype;
+		StartingArchetype archetype = new Bandit();
 		switch (selection){
-			case "1":
+			case "b":
 				archetype = new Bandit();
 				break;
-
-				case "2":
+			case "s":
+				archetype = new Samurai();
 				break;
-				case "3":
+			case "w":
+				archetype = new Wretch();
 				break;
+			default:
+				System.out.println("Please choose a valid starting class.\nShutting game down...");
+				System.exit(0);
 		}
-*/
 
 		Runes runes = new Runes(); //instantiate runes
+		RunesManager runesManager = RunesManager.getInstance();
+
+		// HINT: what does it mean to prefer composition to inheritance?
+		Player player = new Player("Tarnished", '@', archetype, runes);
+		world.addPlayer(player, gameMap.at(36, 10));
+
+		//test application ------------
 		//Runes run = new Runes();
 		//run.setRunesValue(100);
 		//run.togglePortability();
 		//Merchant trader = new Merchant("Merchant Kale", 'K', 1);
-		RunesManager runesManager = RunesManager.getInstance();
-
-		// HINT: what does it mean to prefer composition to inheritance?
-		Player player = new Player("Tarnished", '@', 300, runes);
-		world.addPlayer(player, gameMap.at(36, 10));
 		//gameMap.at(37, 11).addActor(trader);
 		//gameMap.at(39,11).addItem(run);
 

@@ -18,4 +18,12 @@ public abstract class StartingArchetype {
     public void setStartingWeapon(WeaponItem startingWeapon) {
         this.startingWeapon = startingWeapon;
     }
+
+    public int getStartingHitPoints(){
+        return this.startingHitPoints;
+    }
+
+    public WeaponItem getStartingWeapon(){
+        return this.startingWeapon;
+    }
 }
