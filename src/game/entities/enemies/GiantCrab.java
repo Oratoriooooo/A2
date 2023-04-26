@@ -2,7 +2,7 @@ package game.entities.enemies;
 
 import game.utils.RandomNumberGenerator;
 
-public class GiantCrab extends Enemy{
+public class GiantCrab extends EnemyCharacter {
     private final int MAX_RUNES = 4961;
     private final int MIN_RUNES = 318;
 

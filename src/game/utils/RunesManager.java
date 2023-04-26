@@ -1,13 +1,13 @@
 package game.utils;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import game.behaviours.Status;
 import game.items.Runes;
-import game.resettables.Resettable;
-
+import game.resettables.ResetManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 
 /**
@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by:
  * @author Natalie Chan
  */
-public class RunesManager implements Resettable {
+public class RunesManager{
     /**
      *
      */
@@ -28,6 +28,8 @@ public class RunesManager implements Resettable {
      *
      */
     private static RunesManager instance;
+
+    private final int MAX_RUNE_OBJECTS = 2;
 
     private List<GenerateRunes> lis = new ArrayList<>();
 
@@ -71,12 +73,19 @@ public class RunesManager implements Resettable {
     }
 
     /**
-     * add any Runes to be managed into key sets with any possible owners
-     * @param actor Owner of runes
+     * add Runes object to be managed into key sets with any possible owners.
+     *
+     * If there are more runes objects on the map than allowed, remove the already dropped Runes.
+     * @param actor Owner of Runes, can be no-one if dropped
      * @param runes runes object
      */
     public void registerRunes(Actor actor,Runes runes){
-        this.runes.put(actor,runes);
+        // if player dies and there's already runes on the ground
+        if (this.runes.size() >=this.MAX_RUNE_OBJECTS) {
+            this.runes.remove(null);
+
+        }
+        this.runes.put(actor, runes);
     }
 
     /**
@@ -109,12 +118,5 @@ public class RunesManager implements Resettable {
         this.canGenerate.remove(actor);
     }
 
-    public void reset(){
-        this.canGenerate.clear();
-        for (Map.Entry<Actor, Runes> entry: this.runes.entrySet()){
-            if (entry.getKey() == null){
-                removeRunes(entry.getValue());
-            }
-        }
-    }
+
 }

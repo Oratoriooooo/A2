@@ -22,9 +22,30 @@ public class ResetManager {
         this.resettables = new ArrayList<>();
     }
 
-    public void run() {} //creates runes back into player if needed
+    /**
+     * Gets only one instance of ResetManager from the instance attribute.
+     * If there is no instance, create new instance and assign it to the attribute
+     * @return one instance of ResetManager
+     */
+    public static ResetManager getInstance(){
+        if(instance == null){
+            instance = new ResetManager();
+        }
+        return instance;
 
-    public void registerResettable(Resettable resettable) {}
+    }
 
-    public void removeResettable(Resettable resettable) {}
+    public void run() {
+        for(Resettable resettable: this.resettables){
+            resettable.reset();
+        }
+    }
+
+    public void registerResettable(Resettable resettable) {
+        this.resettables.add(resettable);
+    }
+
+    public void removeResettable(Resettable resettable) {
+        this.resettables.remove(resettable);
+    }
 }

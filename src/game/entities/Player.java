@@ -4,12 +4,10 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.archetypes.StartingArchetype;
 import game.items.Runes;
-import game.items.weapons.Club;
 import game.resettables.Resettable;
 import game.behaviours.Status;
 import game.utils.RunesManager;
@@ -43,6 +41,7 @@ public class Player extends Actor implements Resettable{
 	public Player(String name, char displayChar, StartingArchetype startClass, Runes runes) {
 		super(name, displayChar, startClass.getStartingHitPoints());
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		this.addCapability(Status.RETAIN_ITEMS_AND_WEAPONS);
 		this.addWeaponToInventory(startClass.getStartingWeapon());
 		this.setRunes(runes);
 		RunesManager.getInstance().registerRunes(this, runes);
@@ -103,9 +102,12 @@ public class Player extends Actor implements Resettable{
 		this.addItemToInventory(runes);
 	}
 
-
+	/**
+	 * Resets Player when
+	 */
 	@Override
 	public void reset() {
+		this.runes.getDropAction(this);
 		Runes newRunes = new Runes();
 		setRunes(newRunes);
 		this.resetMaxHp(this.getMaxHp());

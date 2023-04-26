@@ -2,9 +2,7 @@ package game.entities.enemies;
 
 import game.utils.RandomNumberGenerator;
 
-import java.util.HashMap;
-
-public class HeavySkeletalSwordsman extends Enemy{
+public class HeavySkeletalSwordsman extends EnemyCharacter {
     private final int MAX_RUNES = 892;
     private final int MIN_RUNES = 35;
 

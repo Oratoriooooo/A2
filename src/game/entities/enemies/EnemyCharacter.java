@@ -7,10 +7,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.behaviours.Behaviour;
-import game.behaviours.FollowBehaviour;
 import game.behaviours.Status;
 import game.behaviours.WanderBehaviour;
 import game.events.AttackAction;
+import game.events.DeathAction;
+import game.resettables.ResetManager;
+import game.resettables.Resettable;
 import game.utils.GenerateRunes;
 
 import java.util.HashMap;
@@ -22,19 +24,20 @@ import java.util.Map;
  * @author Natalie Chan
  * @author Vicky Huang
  */
-public abstract class Enemy extends Actor implements GenerateRunes {
+public abstract class EnemyCharacter extends Actor implements GenerateRunes, Resettable {
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
     /**
-     *
+     * Constructor.
      * @param name
      * @param displayChar
      * @param hitPoints
      */
-    public Enemy(String name, char displayChar, int hitPoints){
+    public EnemyCharacter(String name, char displayChar, int hitPoints){
         super(name, displayChar, hitPoints);
         this.addCapability(Status.CAN_GENERATE_RUNES);
         this.behaviours.put(999, new WanderBehaviour());
+        ResetManager.getInstance().registerResettable(this);
 
 
     }
@@ -49,6 +52,9 @@ public abstract class Enemy extends Actor implements GenerateRunes {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        for (Action action :actions){
+            return action;
+        }
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if(action != null)
@@ -76,5 +82,8 @@ public abstract class Enemy extends Actor implements GenerateRunes {
             // HINT 1: How would you attack the enemy with a weapon?
         }
         return actions;
+    }
+
+    public void reset(){
     }
 }

@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.behaviours.Status;
+import game.resettables.ResetManager;
 import game.utils.GenerateRunes;
 import game.utils.RunesManager;
 
@@ -39,12 +40,16 @@ public class DeathAction extends Action {
 
         ActionList dropActions = new ActionList();
         // drop all items
-        for (Item item : target.getItemInventory())
-            dropActions.add(item.getDropAction(target));
-        for (WeaponItem weapon : target.getWeaponInventory())
-            dropActions.add(weapon.getDropAction(target));
-        for (Action drop : dropActions)
-            drop.execute(target, map);
+        if (!target.hasCapability(Status.RETAIN_ITEMS_AND_WEAPONS)) {
+            for (Item item : target.getItemInventory())
+                dropActions.add(item.getDropAction(target));
+            for (WeaponItem weapon : target.getWeaponInventory())
+                dropActions.add(weapon.getDropAction(target));
+            for (Action drop : dropActions)
+                drop.execute(target, map);
+        }else{
+            ResetManager.getInstance().run(); //run resets for all resettables
+        }
         // remove actor
         map.removeActor(target);
         RunesManager.getInstance().removeActor(target); //removes generate runes actor

@@ -1,22 +1,9 @@
 package game.entities.enemies;
 
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.events.AttackAction;
-import game.behaviours.Behaviour;
-import game.behaviours.Status;
-import game.behaviours.WanderBehaviour;
-import game.utils.GenerateRunes;
+import game.resettables.Resettable;
 import game.utils.RandomNumberGenerator;
 import game.utils.RunesManager;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * BEHOLD, DOG!
@@ -27,7 +14,7 @@ import java.util.Map;
  * @author Natalie Chan
  *
  */
-public class LoneWolf extends Enemy{
+public class LoneWolf extends EnemyCharacter {
     /**
      * max amount of runes a Lone Wolf may generate
      */
