@@ -8,8 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.behaviours.Status;
 import game.resettables.ResetManager;
-import game.utils.GenerateRunes;
-import game.utils.RunesManager;
+import game.runesmanager.RunesManager;
 
 /**
  * An action executed if an actor is killed.

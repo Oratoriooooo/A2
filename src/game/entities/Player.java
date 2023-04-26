@@ -10,7 +10,7 @@ import game.archetypes.StartingArchetype;
 import game.items.Runes;
 import game.resettables.Resettable;
 import game.behaviours.Status;
-import game.utils.RunesManager;
+import game.runesmanager.RunesManager;
 
 /**
  * Class representing the Player. It implements the Resettable interface.

@@ -3,8 +3,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.*;
 import game.behaviours.Status;
 import game.events.PickUpRunesAction;
-import game.resettables.Resettable;
-import game.utils.RunesManager;
+import game.runesmanager.RunesManager;
 
 
 /**

@@ -10,10 +10,9 @@ import game.behaviours.Behaviour;
 import game.behaviours.Status;
 import game.behaviours.WanderBehaviour;
 import game.events.AttackAction;
-import game.events.DeathAction;
 import game.resettables.ResetManager;
 import game.resettables.Resettable;
-import game.utils.GenerateRunes;
+import game.runesmanager.GenerateRunes;
 
 import java.util.HashMap;
 import java.util.Map;

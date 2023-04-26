@@ -1,4 +1,4 @@
-package game.utils;
+package game.runesmanager;
 
 /**
  * A generate runes interface.

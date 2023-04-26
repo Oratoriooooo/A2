@@ -1,9 +1,8 @@
-package game.utils;
+package game.runesmanager;
 
 import edu.monash.fit2099.engine.actors.Actor;
-import game.behaviours.Status;
 import game.items.Runes;
-import game.resettables.ResetManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

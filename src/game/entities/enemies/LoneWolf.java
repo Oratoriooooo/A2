@@ -1,9 +1,8 @@
 package game.entities.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.resettables.Resettable;
 import game.utils.RandomNumberGenerator;
-import game.utils.RunesManager;
+import game.runesmanager.RunesManager;
 
 /**
  * BEHOLD, DOG!

@@ -9,7 +9,6 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.archetypes.*;
-import game.entities.Traders.Merchant;
 import game.entities.enemies.LoneWolf;
 import game.entities.Player;
 import game.environments.Dirt;
@@ -17,7 +16,7 @@ import game.environments.Floor;
 import game.environments.Wall;
 import game.items.FlaskOfCrimsonTears;
 import game.items.Runes;
-import game.utils.RunesManager;
+import game.runesmanager.RunesManager;
 
 /**
  * The main class to start the game.
