@@ -83,6 +83,17 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
         return actions;
     }
 
+    /**
+     * Add the behaviour to the tree map of behaviours
+     *
+     * @param priority int representing the priority of the behaviour in the tree map
+     * @param behaviour the Behaviour to be added to the tree map
+     */
+    public void addBehaviour(int priority, Behaviour behaviour) {
+        this.behaviours.put(priority, behaviour);
+    }
+
+
     public void reset(){
     }
 }

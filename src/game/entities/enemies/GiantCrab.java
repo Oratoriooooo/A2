@@ -1,5 +1,6 @@
 package game.entities.enemies;
 
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
 
 public class GiantCrab extends EnemyCharacter {
@@ -19,4 +20,10 @@ public class GiantCrab extends EnemyCharacter {
     public int generateRunes(){
         return RandomNumberGenerator.getRandomInt(MIN_RUNES, MAX_RUNES);
     }
+
+    @Override
+    public IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(208, "slams", 90);
+    }
+
 }

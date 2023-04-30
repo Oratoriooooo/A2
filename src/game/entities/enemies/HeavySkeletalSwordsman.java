@@ -1,5 +1,6 @@
 package game.entities.enemies;
 
+import game.items.weapons.Grossmesser;
 import game.utils.RandomNumberGenerator;
 
 public class HeavySkeletalSwordsman extends EnemyCharacter {
@@ -8,7 +9,7 @@ public class HeavySkeletalSwordsman extends EnemyCharacter {
 
     public HeavySkeletalSwordsman(){
         super ("Heavy Skeletal Swordsman",'q',153);
-        //this.addWeaponToInventory();
+        this.addWeaponToInventory(new Grossmesser());
     }
 
     /**
