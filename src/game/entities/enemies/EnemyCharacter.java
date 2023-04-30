@@ -6,14 +6,13 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.Status;
 import game.behaviours.WanderBehaviour;
 import game.events.AttackAction;
-import game.resettables.ResetManager;
-import game.resettables.Resettable;
-import game.runesmanager.GenerateRunes;
-import game.runesmanager.RunesManager;
+import game.resettables.*;
+import game.runesmanager.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +36,7 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
         super(name, displayChar, hitPoints);
         this.addCapability(Status.CAN_GENERATE_RUNES);
         this.behaviours.put(999, new WanderBehaviour());
+        this.addBehaviour(50, new AttackBehaviour());
         ResetManager.getInstance().registerResettable(this);
         RunesManager.getInstance().registerActor(this, this);
 
