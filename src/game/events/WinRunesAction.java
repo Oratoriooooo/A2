@@ -19,6 +19,7 @@ public class WinRunesAction extends Action {
         // code to add value to runes
         Runes actorRunes = RunesManager.getInstance().getRunes(winner);
         actorRunes.addRunes(this.runesWon);
+        RunesManager.getInstance().removeActor(loser); //removes generate runes actor
         return System.lineSeparator() + menuDescription(winner);
     }
 

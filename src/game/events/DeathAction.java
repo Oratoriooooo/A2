@@ -51,7 +51,6 @@ public class DeathAction extends Action {
         }
         // remove actor
         map.removeActor(target);
-        RunesManager.getInstance().removeActor(target); //removes generate runes actor
         result += System.lineSeparator() + menuDescription(target);
         return result;
     }
