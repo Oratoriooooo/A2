@@ -28,7 +28,7 @@ public class LoneWolf extends EnemyCharacter {
      */
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
-        RunesManager.getInstance().registerActor(this, this);
+
     }
 
     /**

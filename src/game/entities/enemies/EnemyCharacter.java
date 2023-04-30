@@ -13,6 +13,7 @@ import game.events.AttackAction;
 import game.resettables.ResetManager;
 import game.resettables.Resettable;
 import game.runesmanager.GenerateRunes;
+import game.runesmanager.RunesManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +38,7 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
         this.addCapability(Status.CAN_GENERATE_RUNES);
         this.behaviours.put(999, new WanderBehaviour());
         ResetManager.getInstance().registerResettable(this);
+        RunesManager.getInstance().registerActor(this, this);
 
 
     }
