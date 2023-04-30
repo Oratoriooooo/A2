@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.archetypes.StartingArchetype;
 import game.items.Runes;
+import game.items.weapons.Club;
 import game.resettables.Resettable;
 import game.behaviours.Status;
 import game.runesmanager.RunesManager;
@@ -32,20 +33,41 @@ public class Player extends Actor implements Resettable{
 	 */
 	private Runes runes;
 
+	/*
 	/**
 	 * Constructor of a Player. Registers itself to be keyed to one Runes object.
 	 *
-	 * @param name        Name to call the player in the UI
+	 * @param name Name to call the player in the UI
 	 * @param displayChar Character to represent the player in the UI
 	 * @param startClass   contains player's starting number of hitpoints and weapon
-	 */
-	public Player(String name, char displayChar, StartingArchetype startClass, Runes runes) {
+
+	public Player(String name, char displayChar, StartingArchetype startClass, Runes runes) { // for req 4
 		super(name, displayChar, startClass.getStartingHitPoints());
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.RETAIN_ITEMS_AND_WEAPONS);
 		this.addWeaponToInventory(startClass.getStartingWeapon());
 		this.setRunes(runes);
 		RunesManager.getInstance().registerRunes(this, runes);
+
+	}
+
+	 */
+
+
+	/**
+	 * Constructor of a Player. Registers itself to be keyed to one Runes object.
+	 *
+	 * @param name Name to call the player in the UI
+	 * @param displayChar Character to represent the player in the UI
+	 * @param hitpoints initial max hitpoints of Player
+	 * @param runes contains all of the Player's runes currency
+	 */
+	public Player (String name, char displayChar, int hitpoints, Runes runes){
+		super(name, displayChar, hitpoints);
+		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		this.addCapability(Status.RETAIN_ITEMS_AND_WEAPONS);
+		this.setRunes(runes);
+		this.addWeaponToInventory(new Club());
 
 	}
 
@@ -112,6 +134,7 @@ public class Player extends Actor implements Resettable{
 		Runes newRunes = new Runes();
 		setRunes(newRunes);
 		this.resetMaxHp(this.getMaxHp());
+		RunesManager.getInstance().registerRunes(this, runes);
 
 	}
 

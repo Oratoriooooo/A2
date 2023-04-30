@@ -5,6 +5,7 @@ import java.util.Random;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.behaviours.Status;
 
@@ -39,8 +40,8 @@ public class AttackAction extends Action {
 
 	/**
 	 * Constructor.
-	 * 
-	 * @param target the Actor to attack
+	 *
+	 * @param target    the Actor to attack
 	 * @param direction the direction where the attack should be performed (only used for display purposes)
 	 */
 	public AttackAction(Actor target, String direction, Weapon weapon) {
@@ -52,12 +53,13 @@ public class AttackAction extends Action {
 	/**
 	 * Constructor with intrinsic weapon as default
 	 *
-	 * @param target the actor to attack
+	 * @param target    the actor to attack
 	 * @param direction the direction where the attack should be performed (only used for display purposes)
 	 */
 	public AttackAction(Actor target, String direction) {
 		this.target = target;
 		this.direction = direction;
+		this.weapon = weapon;
 	}
 
 	/**
@@ -66,7 +68,7 @@ public class AttackAction extends Action {
 	 * After death action, generating runes to be given to attacker, is determined
 	 *
 	 * @param actor The actor performing the attack action.
-	 * @param map The map the actor is on.
+	 * @param map   The map the actor is on.
 	 * @return the result of the attack, e.g. whether the target is killed, etc.
 	 * @see DeathAction
 	 */
@@ -84,24 +86,42 @@ public class AttackAction extends Action {
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
 		if (!target.isConscious()) {
-			result += new DeathAction(actor).execute(target, map);
-			//checks if runes can be given to attacker
-			if (target.hasCapability(Status.CAN_GENERATE_RUNES) && actor.hasCapability(Status.CAN_RECIEVE_RUNES)){
-				result += new WinRunesAction(actor).execute(target, map);
+			// get the target's location (x and y coordinate)
+			Location targetLocation = map.locationOf(target);
+			int x = targetLocation.x();
+			int y = targetLocation.y();
+
+			// check if the target can be broken and if it can, break it by despawning it
+			if (target.hasCapability(Status.BREAKABLE)) {
+				Action despawnAction = new DespawnAction();
+				result = actor + " breaks the " + target + ".\n";
+				despawnAction.execute(target, map);
+			} else {
+				result += new DeathAction(actor).execute(target, map);
+
+				//checks if runes can be given to attacker
+				if (target.hasCapability(Status.CAN_GENERATE_RUNES) && actor.hasCapability(Status.CAN_RECIEVE_RUNES)) {
+					result += new WinRunesAction(actor).execute(target, map);
+				} else if (target.hasCapability(Status.BECOME_PILE_OF_BONES)) {
+					result += new SpawnPileOfBonesAction(x, y).execute(target, map);
+
+				}
 			}
 		}
 
-		return result;
+			return result;
+		}
+
+
+		/**
+		 * Describes which target the actor is attacking with which weapon
+		 *
+		 * @param actor The actor performing the action.
+		 * @return a description used for the menu UI
+		 */
+		@Override
+		public String menuDescription (Actor actor){
+			return actor + " attacks " + target + " at " + direction + " with " + (weapon != null ? weapon : "Intrinsic Weapon");
+		}
 	}
 
-	/**
-	 * Describes which target the actor is attacking with which weapon
-	 *
-	 * @param actor The actor performing the action.
-	 * @return a description used for the menu UI
-	 */
-	@Override
-	public String menuDescription(Actor actor) {
-		return actor + " attacks " + target + " at " + direction + " with " + (weapon != null ? weapon : "Intrinsic Weapon");
-	}
-}
