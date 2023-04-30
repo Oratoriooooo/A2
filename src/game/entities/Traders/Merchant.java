@@ -97,6 +97,7 @@ public class Merchant extends Actor {
         this.sellingPrices.put("Uchigatana", 500);
         this.sellingPrices.put("Great Knife", 350);
         this.sellingPrices.put("Club", 100);
+        this.sellingPrices.put("Grossmesser", 100);
     }
 
     /**
