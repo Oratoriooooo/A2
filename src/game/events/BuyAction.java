@@ -24,8 +24,8 @@ public class BuyAction extends Action {
 
     /**
      * Constructor.
-     * @param weapon
-     * @param price
+     * @param weapon weapon to buy
+     * @param price price of weapon
      */
     public BuyAction(WeaponItem weapon, int price){
         super();

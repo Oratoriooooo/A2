@@ -25,9 +25,9 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
 
     /**
      * Constructor.
-     * @param name
-     * @param displayChar
-     * @param hitPoints
+     * @param name name of enemy entity
+     * @param displayChar game map ground representation of enemy
+     * @param hitPoints max initial hitpoints of enemy entity
      */
     public EnemyCharacter(String name, char displayChar, int hitPoints){
         super(name, displayChar, hitPoints);
@@ -68,7 +68,7 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return list of possible actions an actor may use on a enemy
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {

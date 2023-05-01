@@ -24,9 +24,13 @@ public class Runes extends Item {
      * Number of game iterations
      */
     private int gameNumber;
-
+    /**
+     * maximum resets of Runes when dropped on map ground
+     */
     private final int MAX_GAMES = 2;
-
+    /**
+     * location of runes dropped
+     */
     private Location droppedLocation;
 
 
