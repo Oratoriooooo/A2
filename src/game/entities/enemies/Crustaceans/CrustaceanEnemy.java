@@ -1,6 +1,6 @@
 package game.entities.enemies.Crustaceans;
 
-import game.EnemyType;
+import game.entities.enemies.EnemyType;
 import game.behaviours.SlamAreaAttackBehaviour;
 import game.entities.enemies.EnemyCharacter;
 

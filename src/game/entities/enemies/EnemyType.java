@@ -1,4 +1,4 @@
-package game;
+package game.entities.enemies;
 
 public enum EnemyType {
     CANINE,

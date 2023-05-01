@@ -5,15 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.EnemyType;
-import game.behaviours.Status;
-import game.entities.enemies.Breakable;
-import game.entities.enemies.EnemyCharacter;
+import game.entities.enemies.EnemyType;
 import game.events.AttackAction;
-import game.events.BreakAction;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A class that figures out if the actor is close to another type of actor it can attack.

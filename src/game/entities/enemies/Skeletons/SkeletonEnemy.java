@@ -1,7 +1,6 @@
 package game.entities.enemies.Skeletons;
 
-import game.EnemyType;
-import game.behaviours.Status;
+import game.entities.enemies.EnemyType;
 import game.behaviours.Status;
 import game.entities.enemies.EnemyCharacter;
 

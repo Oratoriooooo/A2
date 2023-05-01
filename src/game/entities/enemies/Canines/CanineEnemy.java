@@ -1,6 +1,6 @@
 package game.entities.enemies.Canines;
 
-import game.EnemyType;
+import game.entities.enemies.EnemyType;
 import game.entities.enemies.EnemyCharacter;
 
 /**
