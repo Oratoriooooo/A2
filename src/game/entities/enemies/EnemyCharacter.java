@@ -50,9 +50,6 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        for (Action action :actions){
-            return action;
-        }
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if(action != null)
