@@ -14,9 +14,8 @@ import game.utils.RandomNumberGenerator;
  */
 public class SkeletalBandit extends SkeletonEnemy {
 
-    private final int MIN_RUNES = 35;
     private final int MAX_RUNES = 892;
-
+    private final int MIN_RUNES = 35;
     /**
      * Constructor.
      *
@@ -29,7 +28,11 @@ public class SkeletalBandit extends SkeletonEnemy {
         this.addWeaponToInventory(new Scimitar());
     }
 
-    @Override
+    /**
+     * generates a random value of runes upon death.
+     * The range is from 35 to 892 runes.
+     * @return random amount of runes
+     */
     public int generateRunes(){
         return RandomNumberGenerator.getRandomInt(MIN_RUNES, MAX_RUNES);
     }

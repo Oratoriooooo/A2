@@ -12,9 +12,8 @@ import game.utils.RandomNumberGenerator;
  *
  */
 public class GiantCrayfish extends CrustaceanEnemy {
-
-    private final int MIN_RUNES = 500;
     private final int MAX_RUNES = 2374;
+    private final int MIN_RUNES = 500;
     /**
      * Constructor.
      *
@@ -27,7 +26,11 @@ public class GiantCrayfish extends CrustaceanEnemy {
         return new IntrinsicWeapon(527, "slams", 100);
     }
 
-    @Override
+    /**
+     * generates a random value of runes upon death.
+     * The range is from 500 to 2374 runes.
+     * @return random amount of runes
+     */
     public int generateRunes(){
         return RandomNumberGenerator.getRandomInt(MIN_RUNES, MAX_RUNES);
     }

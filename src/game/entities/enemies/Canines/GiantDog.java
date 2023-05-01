@@ -13,10 +13,14 @@ import game.utils.RandomNumberGenerator;
  *
  */
 public class GiantDog extends CanineEnemy {
-
-    private final int MIN_RUNES = 313;
+    /**
+     * max amount of runes a Giant Dog may generate
+     */
     private final int MAX_RUNES = 1808;
-
+    /**
+     * min amount of runes a Giant Dog may generate
+     */
+    private final int MIN_RUNES = 313;
     /**
      * Constructor.
      *
@@ -31,9 +35,13 @@ public class GiantDog extends CanineEnemy {
         return new IntrinsicWeapon(314, "slams with head", 90);
     }
 
-    @Override
+    /**
+     * generates a random value of runes upon death.
+     * The range is from 313 to 1808 runes.
+     * @return random amount of runes
+     */
     public int generateRunes(){
-        return RandomNumberGenerator.getRandomInt(MIN_RUNES,MAX_RUNES);
+        return RandomNumberGenerator.getRandomInt(MIN_RUNES, MAX_RUNES);
     }
 }
 
