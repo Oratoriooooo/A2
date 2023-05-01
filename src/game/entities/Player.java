@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.archetypes.StartingArchetype;
 import game.items.Runes;
 import game.items.weapons.Club;
 import game.resettables.Resettable;
@@ -105,7 +104,7 @@ public class Player extends Actor implements Resettable{
 	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
 	 * @param map        the map containing the Actor
 	 * @param display    the I/O object to which messages may be written
-	 * @return
+	 * @return Console for user to choose Player action for the turn
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
