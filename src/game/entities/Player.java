@@ -67,7 +67,9 @@ public class Player extends Actor implements Resettable{
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.RETAIN_ITEMS_AND_WEAPONS);
 		this.setRunes(runes);
+		RunesManager.getInstance().registerRunes(this, this.runes);
 		this.addWeaponToInventory(new Club());
+
 
 	}
 
@@ -126,7 +128,7 @@ public class Player extends Actor implements Resettable{
 	}
 
 	/**
-	 * Resets Player when
+	 * Resets Player when they die
 	 */
 	@Override
 	public void reset() {
@@ -140,7 +142,7 @@ public class Player extends Actor implements Resettable{
 
 	/**
 	 * Gets the player's intrinsic weapon
-	 *
+	 * getWeapon
 	 * @return the player's InstrinsicWeapon
 	 */
 	public IntrinsicWeapon getIntrinsicWeapon() {

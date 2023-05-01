@@ -61,7 +61,7 @@ public class AttackBehaviour implements Behaviour {
             }
         }
 
-        // if there are no actors that can be attacked surrounding the actor, return null
+        // if there are no actors that can be attacked surrounding the actor, return null //weapon
         return null;
     }
 }

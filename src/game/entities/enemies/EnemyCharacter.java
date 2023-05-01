@@ -6,10 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.behaviours.AttackBehaviour;
-import game.behaviours.Behaviour;
-import game.behaviours.Status;
-import game.behaviours.WanderBehaviour;
+import game.behaviours.*;
 import game.events.AttackAction;
 import game.resettables.*;
 import game.runesmanager.*;
@@ -78,11 +75,19 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-
-            // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.
+            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
             // HINT 1: How would you attack the enemy with a weapon?
+
+            // Go through the list of weapons of the other actor to get their actions
+            for (int i = 0; i < otherActor.getWeaponInventory().size(); i++) {
+                actions.add(otherActor.getWeaponInventory().get(i).getSkill(this, direction));
+            }
+
+            // the enemy character is next to the player, they will follow them
+            this.addBehaviour(998, new FollowBehaviour(otherActor));
         }
         return actions;
+
     }
 
     /**
