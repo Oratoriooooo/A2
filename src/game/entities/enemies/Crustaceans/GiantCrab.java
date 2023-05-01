@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.entities.enemies.EnemyCharacter;
 import game.utils.RandomNumberGenerator;
 
-public class GiantCrab extends EnemyCharacter {
+public class GiantCrab extends CrustaceanEnemy {
     private final int MAX_RUNES = 4961;
     private final int MIN_RUNES = 318;
 

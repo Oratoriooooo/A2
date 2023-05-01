@@ -14,7 +14,7 @@ import game.runesmanager.RunesManager;
  * @author Natalie Chan
  *
  */
-public class LoneWolf extends EnemyCharacter {
+public class LoneWolf extends CanineEnemy {
     /**
      * max amount of runes a Lone Wolf may generate
      */
