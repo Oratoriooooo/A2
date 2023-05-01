@@ -1,10 +1,8 @@
 package game.environments;
 
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import game.behaviours.Status;
-import game.behaviours.Status;
-import game.entities.enemies.HeavySkeletalSwordsman;
+import game.entities.enemies.Skeletons.HeavySkeletalSwordsman;
 
 /**
  * A special type of Ground representing a graveyard.

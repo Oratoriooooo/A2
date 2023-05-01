@@ -1,4 +1,4 @@
-package game.entities.enemies;
+package game.entities.enemies.Skeletons;
 
 import edu.monash.fit2099.demo.conwayslife.Status;
 import edu.monash.fit2099.engine.actions.Action;
@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.EnemyType;
+import game.entities.enemies.Breakable;
 import game.events.DespawnAction;
 import game.events.SpawnHeavySkeletalSwordsmanAction;
 import game.items.weapons.Grossmesser;

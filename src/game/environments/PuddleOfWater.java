@@ -2,7 +2,7 @@ package game.environments;
 
 import edu.monash.fit2099.engine.positions.Location;
 import game.behaviours.Status;
-import game.entities.enemies.GiantCrab;
+import game.entities.enemies.Crustaceans.GiantCrab;
 
 /**
  * A special type of Ground representing a puddle of water.

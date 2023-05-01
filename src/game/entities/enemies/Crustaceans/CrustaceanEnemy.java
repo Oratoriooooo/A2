@@ -1,7 +1,8 @@
-package game.entities.enemies;
+package game.entities.enemies.Crustaceans;
 
 import game.EnemyType;
 import game.behaviours.SlamAreaAttackBehaviour;
+import game.entities.enemies.EnemyCharacter;
 
 /**
  * Abstract class for all crustacean enemy types

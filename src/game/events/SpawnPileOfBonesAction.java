@@ -3,7 +3,7 @@ package game.events;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.entities.enemies.PileOfBones;
+import game.entities.enemies.Skeletons.PileOfBones;
 
 /**
  * An action executed to spawn a pile of bones.

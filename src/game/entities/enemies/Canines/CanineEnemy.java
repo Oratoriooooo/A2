@@ -1,6 +1,7 @@
-package game.entities.enemies;
+package game.entities.enemies.Canines;
 
 import game.EnemyType;
+import game.entities.enemies.EnemyCharacter;
 
 /**
  * Abstract class for all canine enemy types
@@ -10,7 +11,7 @@ import game.EnemyType;
  * Modified by:
  *
  */
-public abstract class CanineEnemy extends EnemyCharacter{
+public abstract class CanineEnemy extends EnemyCharacter {
     /**
      * Constructor.
      *

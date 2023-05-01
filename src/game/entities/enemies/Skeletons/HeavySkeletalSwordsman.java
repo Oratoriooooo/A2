@@ -1,5 +1,6 @@
-package game.entities.enemies;
+package game.entities.enemies.Skeletons;
 
+import game.entities.enemies.EnemyCharacter;
 import game.items.weapons.Grossmesser;
 import game.utils.RandomNumberGenerator;
 

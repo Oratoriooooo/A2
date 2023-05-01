@@ -1,6 +1,7 @@
-package game.entities.enemies;
+package game.entities.enemies.Canines;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.entities.enemies.EnemyCharacter;
 import game.utils.RandomNumberGenerator;
 import game.runesmanager.RunesManager;
 

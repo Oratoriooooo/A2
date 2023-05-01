@@ -2,14 +2,13 @@ package game;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.entities.Player;
-import game.entities.enemies.*;
+import game.entities.enemies.Canines.LoneWolf;
 import game.environments.*;
 import game.items.FlaskOfCrimsonTears;
 import game.items.Runes;

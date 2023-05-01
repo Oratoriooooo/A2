@@ -1,8 +1,9 @@
-package game.entities.enemies;
+package game.entities.enemies.Skeletons;
 
 import game.EnemyType;
 import game.behaviours.Status;
 import game.behaviours.Status;
+import game.entities.enemies.EnemyCharacter;
 
 /**
  * Abstract class for all skeleton enemy types

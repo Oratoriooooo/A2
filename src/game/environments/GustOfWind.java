@@ -2,7 +2,7 @@ package game.environments;
 
 import edu.monash.fit2099.engine.positions.Location;
 import game.behaviours.Status;
-import game.entities.enemies.LoneWolf;
+import game.entities.enemies.Canines.LoneWolf;
 
 /**
  * A special type of Ground representing a gust of wind.
