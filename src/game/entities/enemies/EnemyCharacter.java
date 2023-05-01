@@ -40,7 +40,7 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
 
     }
     /**
-     * At each turn, select a valid action to perform.
+     * At each turn, select a valid action to perform for an enemy.
      *
      * @param actions    collection of possible Actions for this Actor
      * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
