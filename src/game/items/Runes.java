@@ -1,8 +1,12 @@
 package game.items;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.*;
+import edu.monash.fit2099.engine.positions.Location;
 import game.behaviours.Status;
+import game.events.DropRunesAction;
 import game.events.PickUpRunesAction;
+import game.resettables.ResetManager;
+import game.resettables.Resettable;
 import game.runesmanager.RunesManager;
 
 
@@ -20,6 +24,11 @@ public class Runes extends Item {
      * Number of game iterations
      */
     private int gameNumber;
+
+    private final int MAX_GAMES = 2;
+
+    private Location droppedLocation;
+
 
     /**
      * Constructor.
@@ -98,7 +107,7 @@ public class Runes extends Item {
             RunesManager.getInstance().registerRunes(null, this); //now runes does not belong to anyone
         }
         if (portable) {
-            return new DropItemAction(this);
+            return new DropRunesAction(this);
         }
         return null;
     }
@@ -116,7 +125,27 @@ public class Runes extends Item {
         }
         return false;
     }
+
+    /**
+     * Sets the location where a dead actor dropped its runes.
+     * @param location location of dropped runes
+     */
+    public void setLocation(Location location){
+        this.droppedLocation = location;
+
+    }
+
+    /**
+     * Returns the location on the game map where runes was dropped.
+     * @return location of runes
+     */
+    public Location getDroppedLocation(){
+        return this.droppedLocation;
+    }
+
+
 }
+
 
 
 

@@ -74,13 +74,15 @@ public class RunesManager{
     /**
      * add Runes object to be managed into key sets with any possible owners.
      *
-     * If there are more runes objects on the map than allowed, remove the already dropped Runes.
+     * If there are more runes objects on the map than allowed, remove the already dropped Runes. This occurs when Player resets after death.
      * @param actor Owner of Runes, can be no-one if dropped
      * @param runes runes object
      */
     public void registerRunes(Actor actor,Runes runes){
         // if player dies and there's already runes on the ground
         if (this.runes.size() >=this.MAX_RUNE_OBJECTS) {
+            Runes droppedRunes = this.runes.get(null);
+            droppedRunes.getDroppedLocation().removeItem(droppedRunes);
             this.runes.remove(null);
 
         }
