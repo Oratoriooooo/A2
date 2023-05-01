@@ -72,7 +72,7 @@ public class Merchant extends Actor {
      * @param otherActor the Actor that might want to trade
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return a list of actions a actor may pick to use on Merchant
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
@@ -109,4 +109,5 @@ public class Merchant extends Actor {
         this.buyingPrices.put(new GreatKnife(), 3500);
         this.buyingPrices.put(new Uchigatana(), 5000);
     }
+
 }
