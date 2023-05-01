@@ -67,7 +67,6 @@ public class Player extends Actor implements Resettable{
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.RETAIN_ITEMS_AND_WEAPONS);
 		this.setRunes(runes);
-		RunesManager.getInstance().registerRunes(this, this.runes);
 		this.addWeaponToInventory(new Club());
 
 
@@ -119,12 +118,13 @@ public class Player extends Actor implements Resettable{
 	}
 
 	/**
-	 * Sets Runes to the player's inventory and attribute for easy access
+	 * Sets Runes to the player's inventory and attribute for easy access via RunesManager
 	 * @param runes A collection of runes
 	 */
 	public void setRunes(Runes runes){
 		this.runes = runes;
 		this.addItemToInventory(runes);
+		RunesManager.getInstance().registerRunes(this, this.runes);
 	}
 
 	/**
