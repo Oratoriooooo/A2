@@ -2,11 +2,8 @@ package game.runesmanager;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import game.items.Runes;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
+import java.util.Map;
 
 
 /**
@@ -30,7 +27,6 @@ public class RunesManager{
 
     private final int MAX_RUNE_OBJECTS = 2;
 
-    private List<GenerateRunes> lis = new ArrayList<>();
 
     /**
      * Constructor
@@ -64,7 +60,7 @@ public class RunesManager{
     /**
      * Add actor as a GenerateRunes-Actor key set into the canGenerate runes HashMap
      * @param creator an actor that can generate runes
-     * @param actor
+     * @param actor actor that owns Runes
      */
     public void registerActor(GenerateRunes creator, Actor actor) {
         this.instance.canGenerate.put(actor, creator);
@@ -94,7 +90,12 @@ public class RunesManager{
      * @param runes identifier for actor-runes key value set
      */
     public void removeRunes(Runes runes){
-        this.runes.remove(runes);
+        for (Map.Entry<Actor, Runes> entry : this.runes.entrySet() ){
+            if(this.runes.get(entry.getKey()) == runes){
+                this.runes.remove(entry.getKey());
+            }
+        }
+
     }
 
     /**
