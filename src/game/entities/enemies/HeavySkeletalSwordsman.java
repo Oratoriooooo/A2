@@ -3,7 +3,7 @@ package game.entities.enemies;
 import game.items.weapons.Grossmesser;
 import game.utils.RandomNumberGenerator;
 
-public class HeavySkeletalSwordsman extends EnemyCharacter {
+public class HeavySkeletalSwordsman extends SkeletonEnemy {
     private final int MAX_RUNES = 892;
     private final int MIN_RUNES = 35;
 
