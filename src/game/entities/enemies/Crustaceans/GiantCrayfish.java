@@ -34,6 +34,16 @@ public class GiantCrayfish extends CrustaceanEnemy {
     public int generateRunes(){
         return RandomNumberGenerator.getRandomInt(MIN_RUNES, MAX_RUNES);
     }
+    /**
+     * The following method is called when the enemy is reset and the enemy actor can be reset so the
+     * parent class canReset boolean is set to true.
+     *
+     */
+    @Override
+    public void reset() {
+        super.setCanReset(true);
+    }
+
 }
 
 

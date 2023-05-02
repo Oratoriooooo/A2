@@ -137,4 +137,19 @@ public abstract class SpawnableGround extends Ground {
         }
         return result;
     }
+
+    /**
+     * The following method uses the width of the map and the x value of the location to check if
+     * it is east or west.
+     *
+     * @return boolean representing whether the map location is east or not
+     */
+    public boolean isEast() {
+        int mapWidth = this.map.getXRange().max();
+        if (this.x > mapWidth/2) {
+            return true;
+        }
+        return  false;
+    }
+
 }

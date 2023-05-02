@@ -2,6 +2,7 @@ package game.environments;
 
 import edu.monash.fit2099.engine.positions.Location;
 import game.behaviours.Status;
+import game.entities.enemies.Canines.GiantDog;
 import game.entities.enemies.Canines.LoneWolf;
 
 /**
@@ -18,7 +19,7 @@ public class GustOfWind extends SpawnableGround {
     public GustOfWind() {
         super('&');
         this.setChanceToSpawn(33);
-        this.addCapability(Status.SPAWN_LONE_WOLF);
+
     }
     /**
      * Ground can also experience the joy of time.
@@ -29,10 +30,17 @@ public class GustOfWind extends SpawnableGround {
     public void tick(Location location) {
         super.tick(location);
         String result = "";
-        if (this.hasCapability(Status.SPAWN_LONE_WOLF)) {
+//        if (this.hasCapability(Status.SPAWN_LONE_WOLF)) {
+//            result += super.spawnEnemy(new LoneWolf());
+//        }
+        if (this.isEast()) {
+            result += super.spawnEnemy(new GiantDog());
+        }
+        else {
             result += super.spawnEnemy(new LoneWolf());
         }
         System.out.println(result);
     }
+
 }
 

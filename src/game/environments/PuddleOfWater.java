@@ -3,6 +3,7 @@ package game.environments;
 import edu.monash.fit2099.engine.positions.Location;
 import game.behaviours.Status;
 import game.entities.enemies.Crustaceans.GiantCrab;
+import game.entities.enemies.Crustaceans.GiantCrayfish;
 
 /**
  * A special type of Ground representing a puddle of water.
@@ -18,7 +19,7 @@ public class PuddleOfWater extends SpawnableGround {
     public PuddleOfWater() {
         super('~');
         this.setChanceToSpawn(2);
-        this.addCapability(Status.SPAWN_GIANT_CRAB);
+
     }
     /**
      * Ground can also experience the joy of time.
@@ -29,11 +30,18 @@ public class PuddleOfWater extends SpawnableGround {
     public void tick(Location location) {
         super.tick(location);
         String result = "";
-        if (this.hasCapability(Status.SPAWN_GIANT_CRAB)) {
+//        if (this.hasCapability(Status.SPAWN_GIANT_CRAB)) {
+//            result += super.spawnEnemy(new GiantCrab());
+//        }
+        if (this.isEast()) {
+            result += super.spawnEnemy(new GiantCrayfish());
+        }
+        else {
             result += super.spawnEnemy(new GiantCrab());
         }
         System.out.println(result);
     }
+
 }
 
 

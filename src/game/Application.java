@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.entities.Player;
+import game.entities.Traders.Merchant;
 import game.entities.enemies.Canines.LoneWolf;
 import game.environments.*;
 import game.items.FlaskOfCrimsonTears;
@@ -73,6 +74,11 @@ public class Application {
 		RunesManager runesManager = RunesManager.getInstance();
 		Runes runes = new Runes(); //instantiate runes
 		FlaskOfCrimsonTears flask = new FlaskOfCrimsonTears();
+
+
+		Merchant kale = new Merchant("Merchant Kale", 'K', 1);
+		gameMap.at(37, 12).addActor(kale);
+
 
 
 		// HINT: what does it mean to prefer composition to inheritance?

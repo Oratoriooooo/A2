@@ -107,6 +107,7 @@ public class Runes extends Item {
         //initially false, when player dies = runes can be dropped
         if (!actor.isConscious()) {
             this.togglePortability();
+
             RunesManager.getInstance().removeRunes(this); //change owner
             RunesManager.getInstance().registerRunes(null, this); //now runes does not belong to anyone
         }

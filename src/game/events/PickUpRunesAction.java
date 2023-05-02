@@ -18,7 +18,7 @@ public class PickUpRunesAction extends PickUpAction {
     public String execute(Actor actor, GameMap map){
         RunesManager.getInstance().getRunes(actor).addRunes(this.runesValue);
         super.execute(actor, map);
-        return actor + "retrieves Runes (value: "+ this.runesValue+")";
+        return actor + " retrieves Runes (value: "+ this.runesValue+")";
     }
 
 

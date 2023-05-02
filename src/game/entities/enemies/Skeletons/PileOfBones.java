@@ -13,6 +13,7 @@ import game.entities.enemies.Breakable;
 import game.events.DespawnAction;
 import game.events.SpawnHeavySkeletalSwordsmanAction;
 import game.items.weapons.Grossmesser;
+import game.resettables.Resettable;
 
 
 /**
@@ -23,11 +24,17 @@ import game.items.weapons.Grossmesser;
  * Modified by:
  *
  */
-public class PileOfBones extends Actor implements Breakable {
+public class PileOfBones extends Actor implements Breakable, Resettable {
     /**
      * Integer representing the number of game iterations that have passed
      */
     int ticks = 0;
+
+    /**
+     * Boolean representing if the enemy gets reset or not
+     */
+    private boolean canReset = false;
+
 
     /**
      * Constructor.
@@ -54,6 +61,11 @@ public class PileOfBones extends Actor implements Breakable {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        // if the actor can be reset, it will be removed from the map
+        if (this.canReset) {
+            return new DespawnAction();
+        }
+
         // return null;
         // increment the counter for ticks
         ticks += 1;
@@ -79,7 +91,7 @@ public class PileOfBones extends Actor implements Breakable {
      * @param by the Actor that breaks the pile of bones
      * @param at the location that the pile of bones is at
      * @param map the map that the Actor is on
-     * @return
+     * @return destruction of pile of bones
      */
     @Override
     public String broken(Actor by, Location at, GameMap map) {
@@ -88,5 +100,17 @@ public class PileOfBones extends Actor implements Breakable {
         despawnAction.execute(this, map);
         return result;
     }
+
+    /**
+     * The following method is called when the enemy is reset and the enemy actor can be reset so the
+     * parent class canReset boolean is set to true.
+     *
+     */
+    @Override
+    public void reset() {
+        this.canReset = true;
+    }
+
+
 }
 

@@ -3,6 +3,7 @@ package game.environments;
 import edu.monash.fit2099.engine.positions.Location;
 import game.behaviours.Status;
 import game.entities.enemies.Skeletons.HeavySkeletalSwordsman;
+import game.entities.enemies.Skeletons.SkeletalBandit;
 
 /**
  * A special type of Ground representing a graveyard.
@@ -18,7 +19,7 @@ public class Graveyard extends SpawnableGround {
     public Graveyard() {
         super('n');
         this.setChanceToSpawn(27);
-        this.addCapability(Status.SPAWN_HEAVY_SKELETAL_SWORDSMAN);
+
     }
     /**
      * Ground can also experience the joy of time.
@@ -29,10 +30,17 @@ public class Graveyard extends SpawnableGround {
     public void tick(Location location) {
         super.tick(location);
         String result = "";
-        if (this.hasCapability(Status.SPAWN_HEAVY_SKELETAL_SWORDSMAN)) {
+//        if (this.hasCapability(Status.SPAWN_HEAVY_SKELETAL_SWORDSMAN)) {
+//            result += super.spawnEnemy(new HeavySkeletalSwordsman());
+//        }
+        if (this.isEast()) {
+            result += super.spawnEnemy(new SkeletalBandit());
+        }
+        else {
             result += super.spawnEnemy(new HeavySkeletalSwordsman());
         }
         System.out.println(result);
     }
+
 }
 

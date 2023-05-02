@@ -8,11 +8,13 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.behaviours.*;
 import game.events.AttackAction;
+import game.events.DespawnAction;
 import game.resettables.*;
 import game.runesmanager.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Represents a generic enemy entity in the game.
@@ -21,7 +23,24 @@ import java.util.Map;
  * @author Vicky Huang
  */
 public abstract class EnemyCharacter extends Actor implements GenerateRunes, Resettable {
+    /**
+     * Tree map of behaviours with priority considerations
+     */
+
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    /**
+     * Random number generator
+     */
+    private Random rand = new Random();
+    /**
+     * Integer representing the chance that the actor despawns
+     */
+    private int chanceToDespawn = 10;
+    /**
+     * Boolean representing if the enemy gets reset or not
+     */
+    private boolean canReset = false;
+
 
     /**
      * Constructor.
@@ -50,6 +69,16 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        // if the actor can be reset, it will be removed from the map
+        if (this.canReset) {
+            return new DespawnAction();
+        }
+
+        // if the randomly generated number is less than the chance of despawning, return a despawn action
+        if (rand.nextInt(100) < chanceToDespawn) {
+            return new DespawnAction();
+        }
+
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if(action != null)
@@ -58,6 +87,7 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
 
         return new DoNothingAction();
     }
+
 
     /**
      * The enemy can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
@@ -72,9 +102,6 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
-            // HINT 1: How would you attack the enemy with a weapon?
-
             // Go through the list of weapons of the other actor to get their actions
             for (int i = 0; i < otherActor.getWeaponInventory().size(); i++) {
                 actions.add(otherActor.getWeaponInventory().get(i).getSkill(this, direction));
@@ -100,4 +127,9 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
 
     public void reset(){
     }
+
+    public void setCanReset(boolean childReset) {
+        this.canReset = childReset;
+    }
+
 }

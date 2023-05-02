@@ -52,4 +52,15 @@ public class LoneWolf extends CanineEnemy {
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(97, "bites", 95);
     }
+
+    /**
+     * The following method is called when the enemy is reset and the enemy actor can be reset so the
+     * parent class canReset boolean is set to true.
+     *
+     */
+    @Override
+    public void reset() {
+        super.setCanReset(true);
+    }
+
 }

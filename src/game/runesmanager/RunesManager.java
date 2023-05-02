@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by:
  * @author Natalie Chan
  */
-public class RunesManager{
+public class RunesManager {
     /**
      *
      */

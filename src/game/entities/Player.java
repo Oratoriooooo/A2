@@ -6,9 +6,11 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.items.Runes;
 import game.items.weapons.Club;
+import game.resettables.ResetManager;
 import game.resettables.Resettable;
 import game.behaviours.Status;
 import game.runesmanager.RunesManager;
@@ -31,26 +33,19 @@ public class Player extends Actor implements Resettable{
 	 * Holds a player's runes
 	 */
 	private Runes runes;
-
-	/*
 	/**
-	 * Constructor of a Player. Registers itself to be keyed to one Runes object.
-	 *
-	 * @param name Name to call the player in the UI
-	 * @param displayChar Character to represent the player in the UI
-	 * @param startClass   contains player's starting number of hitpoints and weapon
-
-	public Player(String name, char displayChar, StartingArchetype startClass, Runes runes) { // for req 4
-		super(name, displayChar, startClass.getStartingHitPoints());
-		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addCapability(Status.RETAIN_ITEMS_AND_WEAPONS);
-		this.addWeaponToInventory(startClass.getStartingWeapon());
-		this.setRunes(runes);
-		RunesManager.getInstance().registerRunes(this, runes);
-
-	}
-
+	 * The Location representing the player's last visited site of lost grace
 	 */
+	private Location siteOfLostGrace;
+	/**
+	 * The Boolean checks if the player can be moved to the site of lost grace
+	 */
+	private boolean canRespawn;
+	/**
+	 * The map that the player is on
+	 */
+	private GameMap map;
+
 
 
 	/**
@@ -66,7 +61,12 @@ public class Player extends Actor implements Resettable{
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.RETAIN_ITEMS_AND_WEAPONS);
 		this.setRunes(runes);
+		RunesManager.getInstance().registerRunes(this, this.runes);
 		this.addWeaponToInventory(new Club());
+		this.addCapability(Status.RESPAWNABLE);
+		this.addCapability(Status.RESTING);
+		// player needs to be register as a resettable
+		ResetManager.getInstance().registerResettable(this);
 
 
 	}
@@ -108,6 +108,10 @@ public class Player extends Actor implements Resettable{
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+		if (this.map == null) {
+			this.map = map;
+		}
+
 		System.out.println(this + displayCurrentHitPoints() + ", runes: " + getRunes().getRunesValue());
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
@@ -131,13 +135,22 @@ public class Player extends Actor implements Resettable{
 	 */
 	@Override
 	public void reset() {
-		this.runes.getDropAction(this);
-		Runes newRunes = new Runes();
-		setRunes(newRunes);
+		// if the player has died, then their runes should be dropped, and they will be given a new
+		// runes item
+		if (!this.isConscious()) {
+			this.runes.getDropAction(this);
+			Runes newRunes = new Runes();
+			setRunes(newRunes);
+		}
 		this.resetMaxHp(this.getMaxHp());
 		RunesManager.getInstance().registerRunes(this, runes);
 
+		// player moved to site of lost grace if there isn't already an actor there
+		if (!this.siteOfLostGrace.containsAnActor()) {
+			this.map.moveActor(this, this.siteOfLostGrace);
+		}
 	}
+
 
 	/**
 	 * Gets the player's intrinsic weapon
@@ -147,5 +160,15 @@ public class Player extends Actor implements Resettable{
 	public IntrinsicWeapon getIntrinsicWeapon() {
 		return new IntrinsicWeapon(11, "punches");
 	}
+
+	/**
+	 * Updates the player's last visited site of lost grace
+	 *
+	 * @param siteOfLostGrace the location of the last visited site of lost grace
+	 */
+	public void setSiteOfLostGrace(Location siteOfLostGrace) {
+		this.siteOfLostGrace = siteOfLostGrace;
+	}
+
 
 }

@@ -36,6 +36,7 @@ public class DeathAction extends Action {
     @Override
     public String execute(Actor target, GameMap map) {
         String result = "";
+        String reset = "";
 
         ActionList dropActions = new ActionList();
         // drop all items
@@ -47,11 +48,14 @@ public class DeathAction extends Action {
             for (Action drop : dropActions)
                 drop.execute(target, map);
         }else{
-            ResetManager.getInstance().run(); //run resets for all resettables
+            ResetAction resetAction = new ResetAction();
+            reset += "\n" + resetAction.execute(target, map);
         }
+
         // remove actor
         map.removeActor(target);
         result += System.lineSeparator() + menuDescription(target);
+        result += reset;
         return result;
     }
 
