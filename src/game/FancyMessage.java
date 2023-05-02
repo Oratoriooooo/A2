@@ -1,12 +1,13 @@
 package game;
-
+//Font obtained from: https://patorjk.com/software/taag/#p=display&f=Georgia11&t=;
 /**
  * Fancy messages used to print the game title
- * Font obtained from: https://patorjk.com/software/taag/#p=display&f=Georgia11&t=
+ *
  * Font: Georgia11
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
+ *
  */
 public class FancyMessage {
     public static String ELDEN_RING =
