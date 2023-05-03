@@ -8,7 +8,7 @@ import game.items.Runes;
 import game.runesmanager.RunesManager;
 
 /**
- * Created by:
+ *
  * @author Natalie Chan
  * An action to sell a weapon from an actor's inventory.
  */

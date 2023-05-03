@@ -6,7 +6,7 @@ import game.utils.RandomNumberGenerator;
 /**
  * BEHOLD, CRAYFISH!
  *
- * Created by: Vicky Huang
+ *
  * @author Vicky Huang
  * Modified by:
  *

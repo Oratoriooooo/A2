@@ -28,6 +28,7 @@ public class FlaskOfCrimsonTears extends Item implements Healable, Resettable {
 
     }
 
+    @Override
     public String displayUses(){
         return "(" + this.currentUses + "/" + this.MAX_USES + ")";
     }
@@ -37,6 +38,7 @@ public class FlaskOfCrimsonTears extends Item implements Healable, Resettable {
      * @param actor actor to be healed
      * @return true if the flask is used to heal, false if there are no more uses left
      */
+    @Override
     public boolean heal(Actor actor){
         if (this.currentUses != 0){
             this.currentUses-=1;
@@ -50,6 +52,7 @@ public class FlaskOfCrimsonTears extends Item implements Healable, Resettable {
      * Gets the amount of healthpoints this item will heal
      * @return amount of HP
      */
+    @Override
     public int getHp(){
         return this.MAX_HP;
     }

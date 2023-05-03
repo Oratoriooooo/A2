@@ -4,6 +4,11 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 
+/**
+ * Represents a Great knife weapon.
+ * Created By:
+ * @author Natalie Chan
+ */
 public class GreatKnife extends WeaponItem {
     /**
      * Constructor

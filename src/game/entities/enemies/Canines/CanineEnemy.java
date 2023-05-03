@@ -6,7 +6,7 @@ import game.entities.enemies.EnemyCharacter;
 /**
  * Abstract class for all canine enemy types
  *
- * Created by: Vicky Huang
+ *
  * @author Vicky Huang
  * Modified by:
  *

@@ -4,6 +4,15 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.entities.enemies.EnemyCharacter;
 import game.utils.RandomNumberGenerator;
 
+/**
+ * Represents A Giant Crab enemy entity
+ *
+ *
+ * @author Vicky Huang
+ * Modified by:
+ * @author Natalie Chan
+ *
+ */
 public class GiantCrab extends CrustaceanEnemy {
     private final int MAX_RUNES = 4961;
     private final int MIN_RUNES = 318;

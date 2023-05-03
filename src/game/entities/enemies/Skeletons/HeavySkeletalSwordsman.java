@@ -4,6 +4,15 @@ import game.entities.enemies.EnemyCharacter;
 import game.items.weapons.Grossmesser;
 import game.utils.RandomNumberGenerator;
 
+/**
+ * BEHOLD, HEAVY SKELETAL SWORDSMAN!
+ *
+ *
+ * @author Vicky Huang
+ * Modified by:
+ * @author Natalie Chan
+ *
+ */
 public class HeavySkeletalSwordsman extends SkeletonEnemy {
     private final int MAX_RUNES = 892;
     private final int MIN_RUNES = 35;

@@ -131,7 +131,8 @@ public class Player extends Actor implements Resettable{
 	}
 
 	/**
-	 * Resets Player when they die
+	 * Resets Player when they die. This includes resetting Hp, creating new collection of runes through a Runes and
+	 * moving Player back to last site of lost grace interacted.
 	 */
 	@Override
 	public void reset() {

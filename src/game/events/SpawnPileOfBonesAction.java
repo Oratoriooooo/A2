@@ -9,7 +9,7 @@ import game.entities.enemies.Skeletons.PileOfBones;
  * An action executed to spawn a pile of bones.
  * Created by:
  * @author Vicky Huang
- * Modified by:
+ *
  *
  */
 public class SpawnPileOfBonesAction extends Action {

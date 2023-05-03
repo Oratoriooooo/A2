@@ -57,7 +57,7 @@ public class ResetManager {
     }
 
     /**
-     * Registers resettable entity
+     * Registers resettable entity with Actor counterpart
      * @param actor actor key
      * @param resettable resettable actor value
      */

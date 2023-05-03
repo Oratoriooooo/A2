@@ -8,7 +8,11 @@ import game.events.SpinningAreaAttackAction;
 
 import java.util.Random;
 
-
+/**
+ * Represents the Scimitar weapon.
+ * Created by:
+ * @author Vicky Huang
+ */
 public class Scimitar extends WeaponItem {
     /**
      * Random number generator
@@ -26,6 +30,7 @@ public class Scimitar extends WeaponItem {
         super("Scimitar", 's', 118, "slices", 88);
     }
 
+    @Override
     public Action getSkill(Actor target, String direction) {
         // there is a 50% chance of an attack where a single enemy is attacked or a spinning attack
         if (!(rand.nextInt(100) < chanceToUseSpecialSkill)) {
