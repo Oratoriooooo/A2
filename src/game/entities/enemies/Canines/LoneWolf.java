@@ -8,10 +8,11 @@ import game.runesmanager.RunesManager;
 /**
  * BEHOLD, DOG!
  *
- * Created by:
+ *
  * @author Adrian Kristanto
  * Modified by:
  * @author Natalie Chan
+ * @author Vicky Huang
  *
  */
 public class LoneWolf extends CanineEnemy {

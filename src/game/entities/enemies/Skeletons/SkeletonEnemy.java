@@ -7,7 +7,7 @@ import game.entities.enemies.EnemyCharacter;
 /**
  * Abstract class for all skeleton enemy types
  *
- * Created by: Vicky Huang
+ *
  * @author Vicky Huang
  * Modified by:
  *

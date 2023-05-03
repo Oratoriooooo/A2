@@ -10,7 +10,7 @@ import game.behaviours.Status;
 
 /**
  * An action executed if the actor can conduct a slam area attack.
- * Created by:
+ *
  * @author Vicky Huang
  * Modified by:
  *

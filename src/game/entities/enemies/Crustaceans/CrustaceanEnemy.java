@@ -7,7 +7,7 @@ import game.entities.enemies.EnemyCharacter;
 /**
  * Abstract class for all crustacean enemy types
  *
- * Created by: Vicky Huang
+ *
  * @author Vicky Huang
  * Modified by:
  *

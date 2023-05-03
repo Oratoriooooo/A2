@@ -11,9 +11,9 @@ import game.behaviours.Status;
 
 /**
  * An action executed if the actor can conduct a spinning area attack (using a weapon).
- * Created by:
+ *
  * @author Vicky Huang
- * Modified by:
+ *
  *
  */
 public class SpinningAreaAttackAction extends Action {

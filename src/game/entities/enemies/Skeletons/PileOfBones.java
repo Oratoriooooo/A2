@@ -22,7 +22,7 @@ import game.resettables.Resettable;
 /**
  * BEHOLD, PILE OF BONES!
  *
- * Created by: Vicky Huang
+ *
  * @author Vicky Huang
  * Modified by:
  *

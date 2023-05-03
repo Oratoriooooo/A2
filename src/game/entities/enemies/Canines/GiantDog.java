@@ -7,9 +7,9 @@ import game.utils.RandomNumberGenerator;
 /**
  * BEHOLD, GIANT DOG!
  *
- * Created by:
- * @author Adrian Kristanto
- * Modified by:
+ *
+ * @author Vicky Huang
+ * Modified by: Natalie Chan
  *
  */
 public class GiantDog extends CanineEnemy {
