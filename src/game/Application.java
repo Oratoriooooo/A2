@@ -7,7 +7,9 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.*;
 import game.entities.Player;
 import game.entities.Traders.Merchant;
-import game.entities.enemies.Canines.LoneWolf;
+import game.entities.enemies.Canines.*;
+import game.entities.enemies.Crustaceans.*;
+import game.entities.enemies.Skeletons.*;
 import game.environments.*;
 import game.items.FlaskOfCrimsonTears;
 import game.items.Runes;
@@ -39,8 +41,8 @@ public class Application {
 				"...........................................................................",
 				"...........................................................................",
 				"..................................###___###................................",
-				"..................................________#................................",
-				"..................................#________................................",
+				"..............................n...________#................................",
+				"..................................#________..n.............................",
 				"..................................#_______#................................",
 				"..................................###___###................................",
 				"....................................#___#..................................",
@@ -66,9 +68,6 @@ public class Application {
 				exception.printStackTrace();
 			}
 		}
-
-		gameMap.at(23, 17).addActor(new LoneWolf());
-
 		RunesManager runesManager = RunesManager.getInstance();
 		Runes runes = new Runes(); //instantiate runes
 		FlaskOfCrimsonTears flask = new FlaskOfCrimsonTears();
@@ -93,6 +92,7 @@ public class Application {
 		gameMap.add('U', lostGraceX, lostGraceY);
 
 		// Add the location of the site of lost grace to the player class
+
 		Location siteOfLostGrace = gameMap.at(x, y);
 		player.setSiteOfLostGrace(siteOfLostGrace);
 

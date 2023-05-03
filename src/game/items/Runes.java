@@ -109,7 +109,6 @@ public class Runes extends Item {
             this.togglePortability();
 
             RunesManager.getInstance().removeRunes(this); //change owner
-            RunesManager.getInstance().registerRunes(null, this); //now runes does not belong to anyone
         }
         if (portable) {
             return new DropRunesAction(this);

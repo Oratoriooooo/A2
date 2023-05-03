@@ -8,10 +8,13 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.behaviours.FollowBehaviour;
 import game.entities.enemies.EnemyType;
 import game.entities.enemies.Breakable;
+import game.events.AttackAction;
+import game.events.BreakAction;
 import game.events.DespawnAction;
-import game.events.SpawnHeavySkeletalSwordsmanAction;
+import game.events.RespawnPileOfBonesAction;
 import game.items.weapons.Grossmesser;
 import game.resettables.Resettable;
 
@@ -34,6 +37,10 @@ public class PileOfBones extends Actor implements Breakable, Resettable {
      * Boolean representing if the enemy gets reset or not
      */
     private boolean canReset = false;
+    /**
+     * Actor representing the enemy it will respawn into
+     */
+    private Actor enemyActor;
 
 
     /**
@@ -77,7 +84,7 @@ public class PileOfBones extends Actor implements Breakable, Resettable {
             Location location = map.locationOf(this);
             // print out the results of despawning the pile of bones
             System.out.println(despawnAction.execute(this, map));
-            return new SpawnHeavySkeletalSwordsmanAction(location.x(), location.y());
+            return new RespawnPileOfBonesAction(location.x(), location.y(), this.enemyActor);
         }
 
         return new DoNothingAction();
@@ -111,6 +118,28 @@ public class PileOfBones extends Actor implements Breakable, Resettable {
         this.canReset = true;
     }
 
+    /**
+     * This method sets the enemy actor attribute to the provided actor.
+     *
+     * @param enemyActor the actor to be set
+     */
+    public void setEnemyActor(Actor enemyActor) {
+        this.enemyActor = enemyActor;
+    }
 
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        ActionList actions = new ActionList();
+        if(otherActor.hasCapability(game.behaviours.Status.HOSTILE_TO_ENEMY)){
+            actions.add(new AttackAction(this, direction));
+
+            // Go through the list of weapons of the other actor to get their actions
+            for (int i = 0; i < otherActor.getWeaponInventory().size(); i++) {
+                actions.add(otherActor.getWeaponInventory().get(i).getSkill(this, direction));
+            }
+        }
+        return actions;
+
+    }
 }
 

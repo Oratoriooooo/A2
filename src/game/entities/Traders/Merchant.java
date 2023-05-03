@@ -13,6 +13,7 @@ import game.events.BuyAction;
 import game.events.SellAction;
 import game.items.weapons.Club;
 import game.items.weapons.GreatKnife;
+import game.items.weapons.Scimitar;
 import game.items.weapons.Uchigatana;
 
 
@@ -46,6 +47,7 @@ public class Merchant extends Actor {
     public Merchant(String name, char displayChar, int hitPoints){
         super(name, displayChar, hitPoints);
         createSellingPrices();
+        this.addCapability(Status.IMMORTAL);
     }
 
     /**
@@ -98,6 +100,7 @@ public class Merchant extends Actor {
         this.sellingPrices.put("Great Knife", 350);
         this.sellingPrices.put("Club", 100);
         this.sellingPrices.put("Grossmesser", 100);
+        this.sellingPrices.put("Scimitar", 100);
     }
 
     /**
@@ -108,6 +111,7 @@ public class Merchant extends Actor {
         this.buyingPrices.put(new Club(), 1000);
         this.buyingPrices.put(new GreatKnife(), 3500);
         this.buyingPrices.put(new Uchigatana(), 5000);
+        this.buyingPrices.put(new Scimitar(), 600);
     }
 
 }

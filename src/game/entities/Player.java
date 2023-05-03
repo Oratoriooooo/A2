@@ -66,7 +66,7 @@ public class Player extends Actor implements Resettable{
 		this.addCapability(Status.RESPAWNABLE);
 		this.addCapability(Status.RESTING);
 		// player needs to be register as a resettable
-		ResetManager.getInstance().registerResettable(this);
+		ResetManager.getInstance().registerResettable(this, this);
 
 
 	}

@@ -43,8 +43,10 @@ public class SpawnPileOfBonesAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        Actor otherActor = new PileOfBones();
+        PileOfBones otherActor = new PileOfBones();
         map.at(x, y).addActor(otherActor);
+        // pass the actor to the pile fo bones
+        otherActor.setEnemyActor(actor);
         String result = otherActor + " is spawned.";
         return result;
     }

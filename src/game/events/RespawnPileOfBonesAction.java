@@ -12,7 +12,7 @@ import game.entities.enemies.Skeletons.HeavySkeletalSwordsman;
  * Modified by:
  *
  */
-public class SpawnHeavySkeletalSwordsmanAction extends Action {
+public class RespawnPileOfBonesAction extends Action {
     /**
      * Integer representing the x coordinate to spawn the enemy
      */
@@ -21,6 +21,10 @@ public class SpawnHeavySkeletalSwordsmanAction extends Action {
      * Integer representing the y coordinate to spawn the enemy
      */
     int y;
+    /**
+     * Actor representing the actor to be respawned.
+     */
+    Actor respawnActor;
 
     /**
      * Constructor
@@ -29,9 +33,10 @@ public class SpawnHeavySkeletalSwordsmanAction extends Action {
      * @param y the y coordinate to spawn the enemy
      */
 
-    public SpawnHeavySkeletalSwordsmanAction(int x, int y) {
+    public RespawnPileOfBonesAction(int x, int y, Actor respawnActor) {
         this.x = x;
         this.y = y;
+        this.respawnActor = respawnActor;
     }
 
     /**
@@ -44,9 +49,10 @@ public class SpawnHeavySkeletalSwordsmanAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        Actor otherActor = new HeavySkeletalSwordsman();
-        map.at(x, y).addActor(otherActor);
-        String result = otherActor + " has been spawned.";
+//        Actor otherActor = new HeavySkeletalSwordsman();
+        map.at(x, y).addActor(this.respawnActor);
+        this.respawnActor.heal(1000);
+        String result = this.respawnActor + " has been spawned.";
         return result;
     }
 

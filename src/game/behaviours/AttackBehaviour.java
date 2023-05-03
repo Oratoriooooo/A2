@@ -41,6 +41,7 @@ public class AttackBehaviour implements Behaviour {
                     canAttack = true;
                 }
 
+
                 if (canAttack) {
                     // if the actor can attack and has a weapon, we will get the weapon's special skill which is an action
                     if (actor.getWeaponInventory().size() != 0) {

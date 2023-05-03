@@ -53,7 +53,7 @@ public abstract class EnemyCharacter extends Actor implements GenerateRunes, Res
         this.addCapability(Status.CAN_GENERATE_RUNES);
         this.behaviours.put(999, new WanderBehaviour());
         this.addBehaviour(50, new AttackBehaviour());
-        ResetManager.getInstance().registerResettable(this);
+        ResetManager.getInstance().registerResettable(this, this);
         RunesManager.getInstance().registerActor(this, this);
 
 
