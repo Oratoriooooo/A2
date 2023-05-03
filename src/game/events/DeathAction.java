@@ -37,6 +37,7 @@ public class DeathAction extends Action {
     public String execute(Actor target, GameMap map) {
         String result = "";
         String reset = "";
+        String dropMessage = "";
 
         ActionList dropActions = new ActionList();
         // drop all items
@@ -47,10 +48,17 @@ public class DeathAction extends Action {
                 dropActions.add(weapon.getDropAction(target));
             for (Action drop : dropActions)
                 drop.execute(target, map);
-        }else{
-            ResetAction resetAction = new ResetAction();
-            reset += "\n" + resetAction.execute(target, map);
         }
+        if(target.hasCapability(Status.RETAIN_ITEMS_AND_WEAPONS)){
+            Action drop = RunesManager.getInstance().getRunes(target).getDropAction(target);
+            dropMessage = drop.execute(target, map);
+
+
+
+        }
+        ResetAction resetAction = new ResetAction();
+        reset += "\n" + resetAction.execute(target, map);
+
 
         if (!target.hasCapability(Status.RESPAWNABLE)) {
             map.removeActor(target);
@@ -59,6 +67,7 @@ public class DeathAction extends Action {
 
         result += System.lineSeparator() + menuDescription(target);
         result += reset;
+        result += dropMessage;
         return result;
     }
 

@@ -40,7 +40,10 @@ public class DropRunesAction extends DropAction {
         droppedLocation = map.locationOf(actor);
         this.runes.setLocation(droppedLocation);
         actor.removeItemFromInventory(this.runes);
+        RunesManager.getInstance().removeRunes(this.runes); //change owner
         RunesManager.getInstance().registerRunes(null, this.runes); //now runes does not belong to anyone
+        System.out.println(actor.isConscious());
+        map.at(droppedLocation.x(), droppedLocation.y()).addItem(this.runes);
         super.execute(actor, map);
         return actor + " dropped " + this.runes.getRunesValue() + " runes";
     }
