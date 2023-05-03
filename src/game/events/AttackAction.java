@@ -102,8 +102,9 @@ public class AttackAction extends Action {
 				//checks if runes can be given to attacker
 				if (target.hasCapability(Status.CAN_GENERATE_RUNES) && actor.hasCapability(Status.CAN_RECIEVE_RUNES)) {
 					result += new WinRunesAction(actor).execute(target, map);
-				} else if (target.hasCapability(Status.BECOME_PILE_OF_BONES)) {
-					result += new SpawnPileOfBonesAction(x, y).execute(target, map);
+				}
+				if (target.hasCapability(Status.BECOME_PILE_OF_BONES)) {
+					result += "\n" + new SpawnPileOfBonesAction(x, y).execute(target, map);
 
 				}
 			}
