@@ -52,8 +52,11 @@ public class DeathAction extends Action {
             reset += "\n" + resetAction.execute(target, map);
         }
 
-        // remove actor
-        map.removeActor(target);
+        if (!target.hasCapability(Status.RESPAWNABLE)) {
+            map.removeActor(target);
+        }
+
+
         result += System.lineSeparator() + menuDescription(target);
         result += reset;
         return result;

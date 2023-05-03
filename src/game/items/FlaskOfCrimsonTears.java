@@ -24,7 +24,7 @@ public class FlaskOfCrimsonTears extends Item implements Healable, Resettable {
         this.addCapability(Status.CAN_HEAL);
         this.reset();
         this.addAction(new HealAction(this));
-        ResetManager.getInstance().registerResettable(this);
+        ResetManager.getInstance().registerResettableItem(this);
 
     }
 

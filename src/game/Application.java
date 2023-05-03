@@ -4,12 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.FancyGroundFactory;
-import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.World;
+import edu.monash.fit2099.engine.positions.*;
 import game.entities.Player;
 import game.entities.Traders.Merchant;
-import game.entities.enemies.Canines.LoneWolf;
+import game.entities.enemies.Canines.*;
+import game.entities.enemies.Crustaceans.*;
+import game.entities.enemies.Skeletons.*;
 import game.environments.*;
 import game.items.FlaskOfCrimsonTears;
 import game.items.Runes;
@@ -28,7 +28,7 @@ public class Application {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new SiteOfLostGrace());
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
@@ -68,9 +68,6 @@ public class Application {
 				exception.printStackTrace();
 			}
 		}
-
-		gameMap.at(23, 17).addActor(new LoneWolf());
-
 		RunesManager runesManager = RunesManager.getInstance();
 		Runes runes = new Runes(); //instantiate runes
 		FlaskOfCrimsonTears flask = new FlaskOfCrimsonTears();
@@ -85,6 +82,19 @@ public class Application {
 		Player player = new Player("Tarnished", '@', 300, runes);
 		player.addItemToInventory(flask);
 		world.addPlayer(player, gameMap.at(36, 10));
+
+		// Add the site of lost grace
+		// public void add(char groundChar, NumberRange xs, NumberRange ys)
+		int x = 28;
+		int y = 10;
+		NumberRange lostGraceX = new NumberRange(x, 1);
+		NumberRange lostGraceY = new NumberRange(y, 1);
+		gameMap.add('U', lostGraceX, lostGraceY);
+
+		// Add the location of the site of lost grace to the player class
+
+		Location siteOfLostGrace = gameMap.at(x, y);
+		player.setSiteOfLostGrace(siteOfLostGrace);
 
 		world.run();
 	}

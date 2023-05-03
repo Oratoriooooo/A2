@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.items.DropAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.items.Runes;
+import game.runesmanager.RunesManager;
 
 /**
  * Created by:
@@ -39,6 +40,7 @@ public class DropRunesAction extends DropAction {
         droppedLocation = map.locationOf(actor);
         this.runes.setLocation(droppedLocation);
         actor.removeItemFromInventory(this.runes);
+        RunesManager.getInstance().registerRunes(null, this.runes); //now runes does not belong to anyone
         super.execute(actor, map);
         return actor + " dropped " + this.runes.getRunesValue() + " runes";
     }

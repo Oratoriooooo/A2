@@ -4,6 +4,8 @@ package game.events;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.resettables.ResetManager;
+import game.resettables.Resettable;
 
 /**
  * An action executed if the actor can be despawned.
@@ -13,6 +15,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
  *
  */
 public class DespawnAction extends Action {
+
     /**
      * Removes the actor from the map, effectively 'despawning' it.
      *
@@ -24,6 +27,7 @@ public class DespawnAction extends Action {
     public String execute(Actor actor, GameMap map) {
         // remove the actor from the map
         map.removeActor(actor);
+        ResetManager.getInstance().removeResettable(actor);
         // return the result
         return actor + " is despawned.";
     }
