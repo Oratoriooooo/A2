@@ -22,7 +22,7 @@ public class SiteOfLostGrace extends Ground {
      * Constructor.
      *
      */
-    public SiteOfLostGrace(String name) {
+    public SiteOfLostGrace() {
         super('U');
         this.name = name;
         discovered = false;
@@ -39,13 +39,6 @@ public class SiteOfLostGrace extends Ground {
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
 
-        // Prints the first discovery message of the site - new
-        if (!discovered) {
-            String message = FancyMessage.LOST_GRACE;
-            FancyMessage.printMessage(message);
-            TravelManager.getInstance().addLostGrace(location, this.name);
-            discovered = true;
-        }
 
         // if the actor is able to rest on the site, they can reset so return a reset action
         if(actor.hasCapability(Status.RESTING)){
