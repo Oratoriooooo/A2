@@ -1,4 +1,4 @@
-package game.events;
+package game.events.attacking;
 
 import java.util.Random;
 
@@ -8,6 +8,10 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.behaviours.Status;
+import game.events.death.DeathAction;
+import game.events.death.DespawnAction;
+import game.events.SpawnPileOfBonesAction;
+import game.events.runeactions.WinRunesAction;
 
 /**
  * An Action to attack another Actor.

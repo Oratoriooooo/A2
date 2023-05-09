@@ -1,4 +1,4 @@
-package game.events;
+package game.events.death;
 
 
 import edu.monash.fit2099.engine.actions.Action;

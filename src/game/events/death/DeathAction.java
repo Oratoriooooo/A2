@@ -1,4 +1,4 @@
-package game.events;
+package game.events.death;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.behaviours.Status;
+import game.events.ResetAction;
 import game.resettables.ResetManager;
 import game.runesmanager.RunesManager;
 
@@ -48,16 +49,13 @@ public class DeathAction extends Action {
                 dropActions.add(weapon.getDropAction(target));
             for (Action drop : dropActions)
                 drop.execute(target, map);
-        }
-        if(target.hasCapability(Status.RETAIN_ITEMS_AND_WEAPONS)){
+
+        }else {
             Action drop = RunesManager.getInstance().getRunes(target).getDropAction(target);
             dropMessage = drop.execute(target, map);
-
-
-
+            ResetAction resetAction = new ResetAction();
+            reset += "\n" + resetAction.execute(target, map);
         }
-        ResetAction resetAction = new ResetAction();
-        reset += "\n" + resetAction.execute(target, map);
 
 
         if (!target.hasCapability(Status.RESPAWNABLE)) {

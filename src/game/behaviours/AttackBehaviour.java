@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.entities.enemies.EnemyType;
-import game.events.AttackAction;
+import game.events.attacking.AttackAction;
 
 /**
  * A class that figures out if the actor is close to another type of actor it can attack.
