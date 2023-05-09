@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.entities.enemies.EnemyType;
-import game.events.SlamAreaAttackAction;
+import game.events.attacking.SlamAreaAttackAction;
 
 import java.util.Random;
 

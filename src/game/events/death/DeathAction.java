@@ -1,4 +1,4 @@
-package game.events;
+package game.events.death;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.behaviours.Status;
+import game.events.ResetAction;
 import game.resettables.ResetManager;
 import game.runesmanager.RunesManager;
 

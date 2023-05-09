@@ -28,7 +28,7 @@ public class Application {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new SiteOfLostGrace());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new SiteOfLostGrace("The First Step"));
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
@@ -41,7 +41,7 @@ public class Application {
 				"...........................................................................",
 				"...........................................................................",
 				"..................................###___###................................",
-				"..............................n...________#................................",
+				"..................................________#................................",
 				"..................................#________..n.............................",
 				"..................................#_______#................................",
 				"..................................###___###................................",
@@ -59,15 +59,10 @@ public class Application {
 		world.addGameMap(gameMap);
 
 
-		// BEHOLD, ELDEN RING
-		for (String line : FancyMessage.ELDEN_RING.split("\n")) {
-			new Display().println(line);
-			try {
-				Thread.sleep(200);
-			} catch (Exception exception) {
-				exception.printStackTrace();
-			}
-		}
+		// Prints Elden ring starting gmae message
+		FancyMessage.printMessage(FancyMessage.ELDEN_RING);
+
+
 		RunesManager runesManager = RunesManager.getInstance();
 		Runes runes = new Runes(); //instantiate runes
 		FlaskOfCrimsonTears flask = new FlaskOfCrimsonTears();

@@ -1,10 +1,9 @@
-package game.events;
+package game.events.runeactions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.Runes;
-import game.resettables.ResetManager;
 import game.runesmanager.RunesManager;
 
 /**

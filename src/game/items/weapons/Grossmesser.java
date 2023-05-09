@@ -4,8 +4,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.events.AttackAction;
-import game.events.SpinningAreaAttackAction;
+import game.events.attacking.AttackAction;
+import game.events.attacking.SpinningAreaAttackAction;
 
 import java.util.Random;
 

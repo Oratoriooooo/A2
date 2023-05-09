@@ -1,4 +1,4 @@
-package game.events;
+package game.events.attacking;
 
 
 import edu.monash.fit2099.engine.actions.Action;
@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.behaviours.Status;
+import game.events.death.DespawnAction;
 
 /**
  * An action executed if the actor can conduct a spinning area attack (using a weapon).

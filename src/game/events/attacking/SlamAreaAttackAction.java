@@ -1,4 +1,4 @@
-package game.events;
+package game.events.attacking;
 
 
 import edu.monash.fit2099.engine.actions.Action;
@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.behaviours.Status;
+import game.events.death.DespawnAction;
 
 /**
  * An action executed if the actor can conduct a slam area attack.

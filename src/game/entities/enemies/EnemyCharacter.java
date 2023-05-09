@@ -7,8 +7,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.behaviours.*;
-import game.events.AttackAction;
-import game.events.DespawnAction;
+import game.events.attacking.AttackAction;
+import game.events.death.DespawnAction;
 import game.resettables.*;
 import game.runesmanager.*;
 
